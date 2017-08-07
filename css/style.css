@@ -48,3 +48,138 @@ body {
     color: white;
     background: #fca213;
 }
+
+/*Inicio Pagina Crear Cuento*/
+
+.crearCuento {
+    background-color: #ffe001;
+}
+
+/*slide crear cuento*/
+.slides {
+    padding: 0;
+    width: 100%;
+    height: 500px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+
+.slides input { display: none; }
+
+.slide-container { display: block; }
+
+.slide {
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    background-color: white;
+    transform: scale(0);
+
+    transition: all .7s ease-in-out;
+}
+
+.slide img{
+    width: 100%;
+    height: 100%;
+}
+
+.nav label {
+    width: 100px;
+    height: 100%;
+    display: none;
+    position: absolute;
+
+	  opacity: 0;
+    z-index: 9;
+    cursor: pointer;
+
+    transition: opacity .2s;
+
+    color: #FFF;
+    font-size: 156pt;
+    text-align: center;
+    line-height: 380px;
+    font-family: "Varela Round", sans-serif;
+    background-color: rgba(255, 255, 255, .3);
+    text-shadow: 0px 0px 15px rgb(119, 119, 119);
+}
+
+.slide:hover + .nav label { opacity: 0.5; }
+
+.nav label:hover { opacity: 1; }
+
+.nav .next { right: 0; }
+
+input:checked + .slide-container  .slide {
+    opacity: 1;
+
+    transform: scale(1);
+
+    transition: opacity 1s ease-in-out;
+}
+
+input:checked + .slide-container .nav label { display: block; }
+
+.nav-dots {
+    margin-top: 20px;
+	width: 100%;
+	
+	height: 120px;
+	
+	text-align: center;
+}
+
+.hojas{
+    width: 100px;
+    height: 100px;
+    background-color: white;
+}
+
+.nav-dot {
+	/*estilo para label*/
+	margin: 4px 4px;
+	position: relative;
+	border-radius: 100%;
+	display: inline-block;
+	background-color: orange;
+}
+
+.hojas:hover {
+	cursor: pointer;
+	opacity: 0;
+}
+.menuHojas{text-align: center;}
+.menuHojas button{
+    
+}
+
+.nHoja {margin-top: 20px;} 
+.nHoja img{width: 100px;height: 100px;}
+/*fin slide crear cuento*/
+
+/*Crear Cuento Funciones*/
+
+
+.nombreCuento{ text-align: center}
+
+.nombreCuento input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.miniTexto{position:relative; top:12px; left:13px; z-index: 1;}
+.funcionesCuento{padding-top: 200px}
+
+/*Fin slide Funciones*/
+
+/*Fin Pagina Crear Cuento*/
+
