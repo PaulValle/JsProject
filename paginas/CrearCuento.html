@@ -110,7 +110,15 @@
             </div>
               <!-- Fin Mini Hojas -->
          <div class="col-md-12 col-sm-12">
-        
+                <form enctype="multipart/form-data" class="formulario">
+                    <label>Subir un archivo</label><br />
+                    <input name="archivo" type="file" id="imagen" /><br /><br />
+                    <input type="button" value="Subir imagen" /><br />
+                </form>
+                <!--div para visualizar mensajes-->
+                <div class="messages"></div><br /><br />
+                <!--div para visualizar en el caso de imagen-->
+                <div class="showImage"></div>
         
         </div>
     </div> <!-- Fin Container -->
