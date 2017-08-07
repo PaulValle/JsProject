@@ -10,6 +10,7 @@
     <link href="../css/style.css" rel="stylesheet" type="text/css">
       <link href="../css/agency.css" rel="stylesheet">
      <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    
  
 </head>
 <body class="crearCuento">
@@ -109,16 +110,35 @@
                                
             </div>
               <!-- Fin Mini Hojas -->
+        
+        
+        
+        
          <div class="col-md-12 col-sm-12">
-                <form enctype="multipart/form-data" class="formulario">
-                    <label>Subir un archivo</label><br />
-                    <input name="archivo" type="file" id="imagen" /><br /><br />
-                    <input type="button" value="Subir imagen" /><br />
-                </form>
-                <!--div para visualizar mensajes-->
-                <div class="messages"></div><br /><br />
-                <!--div para visualizar en el caso de imagen-->
-                <div class="showImage"></div>
+             <br><br>
+             <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Escenas</h3>
+                  </div>
+                  <div class="panel-body">
+                     
+                      <div class="col-md-8 col-sm-8 fondoEscenas">
+                     
+                      </div>
+                    <div class="col-md-4 col-sm-4">
+                            <form enctype="multipart/form-data" class="formulario">
+                                <input name="archivo" type="file" id="imagen" /><br /><br />
+                                <input type="button" value="Subir imagen" /><br />
+                            </form>
+                            <!--div para visualizar mensajes-->
+                            <div class="messages"></div><br /><br />
+                            <!--div para visualizar en el caso de imagen-->
+                            <div class="showImage"></div>
+                      </div>
+                  </div>
+            </div>
+             
+                
         
         </div>
     </div> <!-- Fin Container -->

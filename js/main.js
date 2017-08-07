@@ -123,7 +123,7 @@ $(document).ready(function() {
                 showMessage(message);
                 if(isImage(fileExtension))
                 {
-                    $(".showImage").html("<img src='../img/"+data+"' />");
+                    $(".fondoEscenas").append("<img src='../img/"+data+"' />");
                 }
             },
             //si ha ocurrido un error

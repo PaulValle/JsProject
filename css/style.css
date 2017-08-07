@@ -196,6 +196,22 @@ height:0;
         font-size: 18px;
         text-align: center;
     }
+.panel-body{
+    height: 30%;
+}
+
+.fondoEscenas{
+    background: aquamarine;
+    height: 100%;
+}
+
+.fondoEscenas img{
+    padding: 5px;
+    width: 33%;
+    height: 100%;
+}
+/**/
+
 
 
 /*Fin Pagina Crear Cuento*/
