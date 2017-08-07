@@ -5,7 +5,7 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 
     //obtenemos el archivo a subir
     $file = $_FILES['archivo']['name'];
-    $path="../img/";
+    $path="../img/cuentos/";
     //comprobamos si existe un directorio para subir el archivo
     //si no es así, lo creamos
     if(!is_dir($path)) 

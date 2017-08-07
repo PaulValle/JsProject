@@ -97,7 +97,7 @@ $(document).ready(function() {
     });
 
     //al enviar el formulario
-    $(':button').click(function(){
+    $('.subirImg').click(function(){
         //información del formulario
         var formData = new FormData($(".formulario")[0]);
         var message = ""; 
@@ -123,7 +123,7 @@ $(document).ready(function() {
                 showMessage(message);
                 if(isImage(fileExtension))
                 {
-                    $(".fondoEscenas").append("<img src='../img/"+data+"' />");
+                    $(".fondoEscenas").append("<img src='../img/cuentos/"+data+"' />");
                 }
             },
             //si ha ocurrido un error
