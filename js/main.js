@@ -3,7 +3,7 @@ var idCuento=0;
 var usuarios=[];
 var cuentos=[];
 
-function Usuario(user,pass,name){
+class Usuario(user,pass,name){
     this.user= user,
     this.pass=pass,
     this.name=name,
@@ -11,7 +11,7 @@ function Usuario(user,pass,name){
     cuentos=[];
 };
 
-function Cuento(nombre){
+class Cuento(nombre){
     idCuento++;  
     this.nombre=nombre;
     var imagenes=[];
@@ -58,6 +58,8 @@ $(document).ready(function() {
     /*Guardar Cuento*/
      $("#guardar").click(function(){
         var cuento= new Cuento($("#nombre").val());
+        
+         im.pusg
         cuentos.push=cuento;
         alert("Se guardo el cuento "+cuento.nombre);
     });
