@@ -15,7 +15,7 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
     //AGREGA EL ARCHIVO
     if ($file && move_uploaded_file($_FILES['archivo']['tmp_name'],$path.$file))
     {
-       sleep(3);//retrasamos la petición 3 segundos
+       sleep(1);//retrasamos la petición 3 segundos
        echo $file;//devolvemos el nombre del archivo para pintar la imagen
     }
 }else{

@@ -99,7 +99,7 @@ $(document).ready(function() {
     //al enviar el formulario
     $('.subirImg').click(function(){
         //información del formulario
-        var formData = new FormData($(".formulario")[0]);
+        var formData = new FormData($(".formularioI")[0]);
         var message = ""; 
         //hacemos la petición ajax  
         $.ajax({
@@ -133,6 +133,46 @@ $(document).ready(function() {
             }
         });
     });
+    
+    /*$('.subirAudio').click(function(){
+        //información del formulario
+        var formData = new FormData($(".formularioA")[0]);
+        var message = ""; 
+        //hacemos la petición ajax  
+        $.ajax({
+            url: 'subir.php',  
+            type: 'POST',
+            // Form data
+            //datos del formulario
+            data: formData,
+            //necesario para subir archivos via ajax
+            cache: false,
+            contentType: false,
+            processData: false,
+            //mientras enviamos el archivo
+            beforeSend: function(){
+                message = $("<span class='before'>Subiendo el audio, por favor espere...</span>");
+                showMessage(message)        
+            },
+            //una vez finalizado correctamente
+            success: function(data){
+                message = $("<span class='success'>El audio ha subido correctamente.</span>");
+                showMessage(message);
+                if(isImage(fileExtension))
+                {
+                    $(".fondoAudios").append("<audio src='../img/cuentos/"+data+"' />");
+                }
+            },
+            //si ha ocurrido un error
+            error: function(){
+                message = $("<span class='error'>Ha ocurrido un error.</span>");
+                showMessage(message);
+            }
+        });
+    });*/
+    
+    
+    
 });
 
 //como la utilizamos demasiadas veces, creamos una función para 
