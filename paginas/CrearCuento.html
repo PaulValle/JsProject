@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Crear Cuento</title>
-    
+     
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../js/bootstrap.js"></script>
     <link href="../css/style.css" rel="stylesheet" type="text/css">
-      <link href="../css/agency.css" rel="stylesheet">
-     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    
- 
+    <link href="../css/agency.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body class="crearCuento">
    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
@@ -95,13 +96,13 @@
               <!-- Mini Hojas -->
                
             <div class="col-md-10 col-sm-10">
-                <div class="nav-dots">
-                             <li data-target="#myCarousel" data-slide-to="0" class="active nav-dot"><div class="hojas">Portada</div></li>
-                             <li data-target="#myCarousel" data-slide-to="1" class="nav-dot"><div class="hojas">1</div></li>
-                             <li data-target="#myCarousel" data-slide-to="2" class="nav-dot"><div class="hojas">2</div></li>
-                             <li data-target="#myCarousel" data-slide-to="3" class="nav-dot"><div class="hojas">3</div></li>
-                             <li data-target="#myCarousel" data-slide-to="4" class="nav-dot"><div class="hojas">4</div></li>
-                             <li data-target="#myCarousel" data-slide-to="5" class="nav-dot"><div class="hojas">5</div></li>
+                <div class="nav-dots" id="droppable">
+                             <li data-target="#myCarousel" data-slide-to="0" class="active nav-dot"><div id="droppable" class="hojas ui-widget-header">Portada</div></li>
+                             <li id="droppable"  data-target="#myCarousel" data-slide-to="1" class="nav-dot ui-widget-header"><div class="hojas ">1</div></li>
+                             <li data-target="#myCarousel" data-slide-to="2" class="nav-dot"><div id="droppable" class="hojas">2</div></li>
+                             <li data-target="#myCarousel" data-slide-to="3" class="nav-dot"><div id="droppable" class="hojas">3</div></li>
+                             <li data-target="#myCarousel" data-slide-to="4" class="nav-dot"><div id="droppable" class="hojas">4</div></li>
+                             <li data-target="#myCarousel" data-slide-to="5" class="nav-dot"><div id="droppable" class="hojas">5</div></li>
                                                            
                 </div>
             </div>
@@ -168,8 +169,9 @@
         <!-- FIN SUBIR AUDIOS-->
         
     </div> <!-- Fin Container -->
-    
+   
    <script src="../js/main.js"></script>
+    
 </body>
 <footer>
     

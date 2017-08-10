@@ -41,6 +41,15 @@ var contCuento=6;
             
 $(document).ready(function() {
     
+  $( function() {
+    $( "#draggable" ).draggable();
+    $( "#droppable" ).droppable({
+      drop: function( event, ui ) {
+       
+          alert("holi");
+      }
+    });
+  } );
     /*Agregar otra hoja*/
     $(".nHoja").click(function(){
         var texto="<div class='item'>\
@@ -50,7 +59,7 @@ $(document).ready(function() {
                     </div>"
                     
         $(".carousel-inner").append(texto);
-        $(".nav-dots").append("<li data-target='#myCarousel' data-slide-to="+contCuento+" class='nav-dot'><div class='hojas'>"+contCuento+"</div></li>");
+        $(".nav-dots").append("<li data-target='#myCarousel' data-slide-to="+contCuento+" class='nav-dot'><div id='droppable' class='hojas'>"+contCuento+"</div></li>");
         contCuento++;
     });
     
@@ -93,7 +102,7 @@ $(document).ready(function() {
         //obtenemos el tipo de archivo image/png ejemplo
         var fileType = file.type;
         //mensaje con la información del archivo
-        showMessage("<span class='info'>Archivo para subir: "+fileName+", peso total: "+fileSize+" bytes.</span>");
+        showMessage("<span>Archivo para subir: "+fileName+", peso total: "+fileSize+" bytes.</span>");
     });
 
     //al enviar el formulario
@@ -114,21 +123,21 @@ $(document).ready(function() {
             processData: false,
             //mientras enviamos el archivo
             beforeSend: function(){
-                message = $("<span class='before'>Subiendo la imagen, por favor espere...</span>");
+                message = $("<span>Subiendo la imagen, por favor espere...</span>");
                 showMessage(message)        
             },
             //una vez finalizado correctamente
             success: function(data){
-                message = $("<span class='success'>La imagen ha subido correctamente.</span>");
+                message = $("<span>La imagen ha subido correctamente.</span>");
                 showMessage(message);
                 if(isImage(fileExtension))
                 {
-                    $(".fondoEscenas").append("<img src='../img/cuentos/"+data+"' />");
+                    $(".fondoEscenas").append("<img id='draggable' class='ui-widget-content' src='../img/cuentos/"+data+"' />");
                 }
             },
             //si ha ocurrido un error
             error: function(){
-                message = $("<span class='error'>Ha ocurrido un error.</span>");
+                message = $("<span>Ha ocurrido un error.</span>");
                 showMessage(message);
             }
         });
@@ -202,3 +211,5 @@ function isImage(extension)
     
     /// //FIN ARCHIVOS AUDIO Y SONIDO
   
+/*ARRASTRAR IMAGENES*/
+
