@@ -248,3 +248,13 @@ span{font-size: 14px;
 .mostrar{
     display: block;
 }
+
+.col-md-4{
+    background-color: bisque;
+    margin: 17px;
+    padding: 10px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    width: 30%;
+}
+
