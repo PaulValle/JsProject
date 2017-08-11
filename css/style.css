@@ -150,8 +150,8 @@ body {
 	cursor: pointer;
 	opacity: 0;
 }
-.nHoja{margin-top: 20px;}
-.nHoja img{width: 100px;height: 100px;}
+.nHoja,.bHoja{margin-top: 20px;}
+.nHoja img,.bHoja img{width: 100px;height: 100px;}
 /*fin slide crear cuento*/
 
 /*Crear Cuento Funciones*/

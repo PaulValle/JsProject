@@ -50,8 +50,15 @@ var contCuento=6;
         $(".nav-dots").append("<li data-target='#myCarousel' data-slide-to="+contCuento+" class='nav-dot'><div id='droppable' class='hojas'>"+contCuento+"</div></li>");
         contCuento++;
     });
-    
-    
+    /*Eliminar otra hoja*/
+        
+    $(".bHoja").click(function(){
+        contCuento--;
+        //$(".carousel-control").simulate('click');
+        
+        $(".item:last").remove();
+        $(".nav-dot:last").remove();    
+    });
     /*Guardar Cuento*/
      $("#guardar").click(function(){
         var cuento= new Cuento($("#nombre").val());
@@ -120,7 +127,7 @@ var contCuento=6;
                 showMessage(message);
                 if(isImage(fileExtension))
                 {
-                    $(".fondoEscenas").append("<img id='draggable' class='ui-widget-content' src='../img/cuentos/"+data+"' />");
+                    $(".fondoEscenas").html("<img id='draggable' class='ui-widget-content' src='../img/cuentos/"+data+"' />");
                      $( "#draggable" ).draggable({ revert: true});
                 }
             },
