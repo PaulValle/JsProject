@@ -133,6 +133,52 @@ var contCuento=6;
     });
 
 
+//AUDIOS
+
+$('.subirAudio').click(function(){
+        //información del formulario
+        var formData = new FormData($(".formularioA")[0]);
+        var message = ""; 
+        //hacemos la petición ajax  
+        $.ajax({
+            url: 'subir.php',  
+            type: 'POST',
+            // Form data
+            //datos del formulario
+            data: formData,
+            //necesario para subir archivos via ajax
+            cache: false,
+            contentType: false,
+            processData: false,
+            //mientras enviamos el archivo
+            beforeSend: function(){
+                message = $("<span class='before'>Subiendo el audio, por favor espere...</span>");
+                showMessage(message)        
+            },
+            //una vez finalizado correctamente
+            success: function(data){
+                message = $("<span class='success'>El audio ha subido correctamente.</span>");
+                showMessage(message);
+                if(isImage(fileExtension))
+                {
+                    $(".fondoAudio").append("<audio controls><source src='../img/cuentos/" +data+ "' type='audio/mp3'></audio>");
+                    console.log(data);
+                 /*<audio controls>
+                              <source src="../img/cuentos/000938162_prev.mp3" type="audio/mp3">
+                </audio>*/
+                }
+            },
+            //si ha ocurrido un error
+            error: function(){
+                message = $("<span class='error'>Ha ocurrido un error.</span>");
+                showMessage(message);
+            }
+        });
+    });
+    
+
+
+
 //como la utilizamos demasiadas veces, creamos una función para 
 //evitar repetición de código
 function showMessage(message){
