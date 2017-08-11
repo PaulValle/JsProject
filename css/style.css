@@ -58,56 +58,69 @@ body {
 /*slide crear cuento*/
 
 #jquery-script-menu {
-position: fixed;
-height: 90px;
-width: 100%;
-top: 0;
-left: 0;
-border-top: 5px solid #316594;
-background: #fff;
--moz-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
--webkit-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
-z-index: 999999;
-padding: 10px 0;
--webkit-box-sizing:content-box;
--moz-box-sizing:content-box;
-box-sizing:content-box;
+    position: fixed;
+    height: 90px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-top: 5px solid #316594;
+    background: #fff;
+    -moz-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
+    z-index: 999999;
+    padding: 10px 0;
+    -webkit-box-sizing:content-box;
+    -moz-box-sizing:content-box;
+    box-sizing:content-box;
 }
 
 .jquery-script-center {
-width: 960px;
-margin: 0 auto;
+    width: 960px;
+    margin: 0 auto;
 }
 .jquery-script-center ul {
-width: 212px;
-float:left;
-line-height:45px;
-margin:0;
-padding:0;
-list-style:none;
+    width: 212px;
+    float:left;
+    line-height:45px;
+    margin:0;
+    padding:0;
+    list-style:none;
 }
 .jquery-script-center a {
 	text-decoration:none;
 }
 .jquery-script-ads {
-width: 728px;
-height:90px;
-float:right;
+    width: 728px;
+    height:90px;
+    float:right;
 }
 .jquery-script-clear {
-clear:both;
-height:0;
+    clear:both;
+    height:0;
 }
 
 .item{ 
     width: 100%;
     height: 500px;
-    background-color: white;}
+    background-color: white;
+    background-size: 100% 100%;}
 
-.myCarousel img{ width: 100px;
+.escenas{
+    padding: 2px;
+    margin: 2px;
+}
+
+.escenas img{
+    width: 100%;
+    height: 500px;
+    
+}
+
+.myCarousel img{ 
+    width: 100px;
     height: 100px;
-    }
+}
 
 .nav-dots {
     margin-top: 20px;
@@ -163,39 +176,39 @@ height:0;
         float: left;
         font-family: sans-serif;
         display: none;
-    }
-    .info{
-        padding: 10px;
-        border-radius: 10px;
-        background: orange;
-        color: #fff;
-        font-size: 18px;
-        text-align: center;
-    }
-    .before{
-        padding: 10px;
-        border-radius: 10px;
-        background: blue;
-        color: #fff;
-        font-size: 18px;
-        text-align: center;
-    }
-    .success{
-        padding: 10px;
-        border-radius: 10px;
-        background: green;
-        color: #fff;
-        font-size: 18px;
-        text-align: center;
-    }
-    .error{
-        padding: 10px;
-        border-radius: 10px;
-        background: red;
-        color: #fff;
-        font-size: 18px;
-        text-align: center;
-    }
+}
+.info{
+    padding: 10px;
+    border-radius: 10px;
+    background: orange;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+}
+.before{
+    padding: 10px;
+    border-radius: 10px;
+    background: blue;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+}
+.success{
+    padding: 10px;
+    border-radius: 10px;
+    background: green;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+}
+.error{
+    padding: 10px;
+    border-radius: 10px;
+    background: red;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+}
 .panel-body{
     height: 30%;
 }
@@ -212,17 +225,26 @@ height:0;
 }
 span{font-size: 14px;
     margin: 0px auto;
-background-color: greenyellow;}
+    background-color: greenyellow;
+}
 /**/
 
 
 
 /*Fin Pagina Crear Cuento*/
 #mainNav{
- background-color:  #0081eb;   
+    background-color:  #0081eb;   
 }
 /* pauul */
 .cuentoTitulo{
     color: skyblue;
     text-align: center;
+}
+
+/*ARRASTRAR IMAGENES*/
+.ocultar{
+    display: none;
+};
+.mostrar{
+    display: block;
 }

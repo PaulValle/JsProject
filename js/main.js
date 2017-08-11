@@ -37,24 +37,12 @@ cuentos.push=cuento3;
 
 var contCuento=6;
 
-
-            
-$(document).ready(function() {
-    
-  $( function() {
-    $( "#draggable" ).draggable();
-    $( "#droppable" ).droppable({
-      drop: function( event, ui ) {
-       
-          alert("holi");
-      }
-    });
-  } );
+ 
     /*Agregar otra hoja*/
     $(".nHoja").click(function(){
         var texto="<div class='item'>\
-                      <div class='container'>\
-                        Pagina "+contCuento+"\
+                      <div class='container escenas'>\
+                        <div>Pagina "+contCuento+"</div>\
                       </div>\
                     </div>"
                     
@@ -133,6 +121,7 @@ $(document).ready(function() {
                 if(isImage(fileExtension))
                 {
                     $(".fondoEscenas").append("<img id='draggable' class='ui-widget-content' src='../img/cuentos/"+data+"' />");
+                     $( "#draggable" ).draggable({ revert: true});
                 }
             },
             //si ha ocurrido un error
@@ -142,47 +131,7 @@ $(document).ready(function() {
             }
         });
     });
-    
-    /*$('.subirAudio').click(function(){
-        //información del formulario
-        var formData = new FormData($(".formularioA")[0]);
-        var message = ""; 
-        //hacemos la petición ajax  
-        $.ajax({
-            url: 'subir.php',  
-            type: 'POST',
-            // Form data
-            //datos del formulario
-            data: formData,
-            //necesario para subir archivos via ajax
-            cache: false,
-            contentType: false,
-            processData: false,
-            //mientras enviamos el archivo
-            beforeSend: function(){
-                message = $("<span class='before'>Subiendo el audio, por favor espere...</span>");
-                showMessage(message)        
-            },
-            //una vez finalizado correctamente
-            success: function(data){
-                message = $("<span class='success'>El audio ha subido correctamente.</span>");
-                showMessage(message);
-                if(isImage(fileExtension))
-                {
-                    $(".fondoAudios").append("<audio src='../img/cuentos/"+data+"' />");
-                }
-            },
-            //si ha ocurrido un error
-            error: function(){
-                message = $("<span class='error'>Ha ocurrido un error.</span>");
-                showMessage(message);
-            }
-        });
-    });*/
-    
-    
-    
-});
+
 
 //como la utilizamos demasiadas veces, creamos una función para 
 //evitar repetición de código
@@ -213,3 +162,13 @@ function isImage(extension)
   
 /*ARRASTRAR IMAGENES*/
 
+ $( function() {
+    $( ".item" ).droppable({
+      drop: function( event, ui ) {
+         
+          var id = ui.draggable.attr("src");
+          alert(id);
+          $( this ).children().append("<img src='"+id+"'>");
+      }
+    });
+  } );
