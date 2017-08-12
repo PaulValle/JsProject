@@ -1,5 +1,4 @@
-var idUsuario=0;
-var idCuento=0;
+
 var usuarios=[];
 var cuentos=[];
 
@@ -7,12 +6,10 @@ function Usuario(user,pass,name){
     this.user= user,
     this.pass=pass,
     this.name=name,
-    idUsuario++;
     cuentos=[];
 };
 
 function Cuento(nombre){
-    idCuento++;  
     this.nombre=nombre;
     var imagenes=[];
     var sonidos=[];
@@ -59,12 +56,22 @@ var contCuento=6;
         $(".item:last").remove();
         $(".nav-dot:last").remove();    
     });
+
     /*Guardar Cuento*/
      $("#guardar").click(function(){
         var cuento= new Cuento($("#nombre").val());
         
-         im.pusg
+        
         cuentos.push=cuento;
+        $(".escenas").each(function (index) 
+        { 
+            
+            //alert(index);
+        }); 
+         
+         
+         
+         
         alert("Se guardo el cuento "+cuento.nombre);
     });
     
@@ -119,12 +126,12 @@ var contCuento=6;
             //mientras enviamos el archivo
             beforeSend: function(){
                 message = $("<span>Subiendo la imagen, por favor espere...</span>");
-                showMessage(message)        
+                showMessageE(message)        
             },
             //una vez finalizado correctamente
             success: function(data){
                 message = $("<span>La imagen ha subido correctamente.</span>");
-                showMessage(message);
+                showMessageE(message);
                 if(isImage(fileExtension))
                 {
                     $(".fondoEscenas").html("<img id='draggable' class='ui-widget-content' src='../img/cuentos/"+data+"' />");
@@ -134,7 +141,7 @@ var contCuento=6;
             //si ha ocurrido un error
             error: function(){
                 message = $("<span>Ha ocurrido un error.</span>");
-                showMessage(message);
+                showMessageE(message);
             }
         });
     });
@@ -159,13 +166,13 @@ $('.subirAudio').click(function(){
             processData: false,
             //mientras enviamos el archivo
             beforeSend: function(){
-                message = $("<span class='before'>Subiendo el audio, por favor espere...</span>");
-                showMessage(message)        
+                message = $("<span\>Subiendo el audio, por favor espere...</span>");
+                showMessageA(message)        
             },
             //una vez finalizado correctamente
             success: function(data){
-                message = $("<span class='success'>El audio ha subido correctamente.</span>");
-                showMessage(message);
+                message = $("<span\>El audio ha subido correctamente.</span>");
+                showMessageA(message);
                 if(isImage(fileExtension))
                 {
                     $(".fondoAudio").append("<audio controls><source src='../img/cuentos/" +data+ "' type='audio/mp3'></audio>");
@@ -177,8 +184,8 @@ $('.subirAudio').click(function(){
             },
             //si ha ocurrido un error
             error: function(){
-                message = $("<span class='error'>Ha ocurrido un error.</span>");
-                showMessage(message);
+                message = $("<span>Ha ocurrido un error.</span>");
+                showMessageA(message);
             }
         });
     });
@@ -188,11 +195,14 @@ $('.subirAudio').click(function(){
 
 //como la utilizamos demasiadas veces, creamos una función para 
 //evitar repetición de código
-function showMessage(message){
-    $(".messages").html("").show();
-    $(".messages").html(message);
+function showMessageE(message){
+    $(".messagesE").html("").show();
+    $(".messagesE").html(message);
 }
-
+function showMessageA(message){
+    $(".messagesA").html("").show();
+    $(".messagesA").html(message);
+}
 //comprobamos si el archivo a subir es una imagen
 //para visualizarla una vez haya subido
 function isImage(extension)
@@ -220,8 +230,10 @@ function isImage(extension)
       drop: function( event, ui ) {
          
           var id = ui.draggable.attr("src");
-          alert(id);
-          $( this ).children().append("<img src='"+id+"'>");
+          //alert(id);
+          //alert(this);
+        
+        $( this ).children().html("<img src='"+id+"'>");
       }
     });
   } );
