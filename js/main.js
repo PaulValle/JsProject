@@ -102,6 +102,11 @@ var contCuento=6;
             
     }); 
 
+/*Preguntas*/
+  $(".bActividad").click(function(){
+       alert("Hola");
+    });
+
      $("#guardar").click(function(){
         var imagenesCuento=[];
         //esta bandera sirve para saber si todas las hojas estan llenas

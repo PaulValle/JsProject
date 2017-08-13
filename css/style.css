@@ -154,7 +154,10 @@ body {
     display: inline-block
 }
 .nHoja,.bHoja{margin-top: 20px;}
+.bActividad{margin-top: 20px;}
 .nHoja img,.bHoja img{width: 50px;height: 50px;}
+
+.bActividad img{width: 50px;height: 50px;}
 /*fin slide crear cuento*/
 
 /*Crear Cuento Funciones*/
