@@ -1,27 +1,61 @@
 
-var usuarios=[];
 
-function Usuario(user,pass,name){
-    this.user= user,
-    this.pass=pass,
-    this.name=name,
-    this.cuentos=[];
+
+class Usuario{
+    
+  constructor(obj) {
+        this.user= obj.user;
+        this.pass=obj.pass;
+        this.nombre=obj.nombre;
+        var cuentos=[];
+        $.each(obj.cuentos,function(i,emp){ 
+            cuentos.push(new Cuento(emp));
+        });
+        this.cuentos=cuentos;
+  }
 };
 
-function Cuento(nombre){
-    this.nombre=nombre;
-    this.imagenes=[];
-    this.sonidos=[];
-    
+class Cuento{
+    constructor(obj) {
+        this.nombre=obj.nombre;
+        var imagenes=[];
+        $.each(obj.imagenes,function(i,emp){ 
+            imagenes.push(emp.url);
+        });
+        this.imagenes=imagenes;
+        var audios=[];
+        $.each(obj.audios,function(i,emp){ 
+            audios.push(emp.url);
+        });
+        this.audios=audios;
+    }
     
 };
 
 
 var contCuento=6;
 
- 
+    
+
+    var leer= function(){
+        
+	    var usuarios=[];
+        $.getJSON('datos.json',function(data){
+            $.each(data.usuarios,function(i,emp){
+                //alert("hola");
+                usuarios.push(new Usuario(emp));
+            });
+            $.each(usuarios,function(i,emp){ 
+                alert(emp.cuentos[0].nombre);
+            });
+        });
+       
+        
+    };
+
     /*Agregar otra hoja*/
     $(".nHoja").click(function(){
+        leer();
         var texto="<div class='item'>\
                       <div class='container escenas'>\
                         <div>Pagina "+contCuento+"</div>\
@@ -52,7 +86,7 @@ var contCuento=6;
         $(".escenas").each(function (index) 
         { 
         
-            var ruta=$(this).children().attr("src");
+            var ruta=$(this).find("img").attr("src");
             //alert("ruta: "+ruta);
             if(ruta==undefined){
                 alert("Llena todas las hojas.");
