@@ -1,36 +1,21 @@
 
 var usuarios=[];
-var cuentos=[];
 
 function Usuario(user,pass,name){
     this.user= user,
     this.pass=pass,
     this.name=name,
-    cuentos=[];
+    this.cuentos=[];
 };
 
 function Cuento(nombre){
     this.nombre=nombre;
-    var imagenes=[];
-    var sonidos=[];
+    this.imagenes=[];
+    this.sonidos=[];
     
     
 };
 
-
-var usuario1= new Usuario('deathpaul','yancito','Paul Valle');
-var usuario2= new Usuario('chibi','conejito','Paola Ortiz');
-var usuario3= new Usuario('kipamuno','gatito','Kimberly Muñoz');
-usuarios.push=usuario1;
-usuarios.push=usuario2;
-usuarios.push=usuario3;
-
-var cuento1= new Cuento('Caperucita Roja');
-var cuento2= new Cuento('Los 3 chanchitos');
-var cuento3= new Cuento('Blancanieves');
-cuentos.push=cuento1;
-cuentos.push=cuento2;
-cuentos.push=cuento3;
 
 var contCuento=6;
 
@@ -59,22 +44,38 @@ var contCuento=6;
 
     /*Guardar Cuento*/
      $("#guardar").click(function(){
+        //creo el cuento
         var cuento= new Cuento($("#nombre").val());
-        
-        
-        cuentos.push=cuento;
+        var imagenesCuento=[];
+        //esta bandera sirve para saber si todas las hojas estan llenas
+        var flag=0; 
         $(".escenas").each(function (index) 
         { 
+        
+            var ruta=$(this).children().attr("src");
+            //alert("ruta: "+ruta);
+            if(ruta==undefined){
+                alert("Llena todas las hojas.");
+                flag++;
+                return false;
+            }else{
+                imagenesCuento.push(ruta);
+                
+            }
             
-            //alert(index);
         }); 
          
-         
-         
-         
-        alert("Se guardo el cuento "+cuento.nombre);
-    });
-    
+        //si todas las hojas estan llenas se puede guardar sino no
+        if(flag==0){
+            
+             alert("Se guardo el cuento "+cuento.nombre);
+             cuento.imagenes=imagenesCuento;
+             //alert(imagenesCuento.length);
+             window.location.href = "../index.html";
+        }
+        
+    });  
+
     /*Salir pero con alerta*/
      $("#salir").click(function(){
         window.onbeforeunload = confirmExit;
@@ -91,7 +92,8 @@ var contCuento=6;
     //queremos que esta variable sea global
     var fileExtension = "";
     //función que observa los cambios del campo file y obtiene información
-    $(':file').change(function()
+   
+    $('#imagen').change(function()
     {
         //obtenemos un array con los datos del archivo
         var file = $("#imagen")[0].files[0];
@@ -104,7 +106,23 @@ var contCuento=6;
         //obtenemos el tipo de archivo image/png ejemplo
         var fileType = file.type;
         //mensaje con la información del archivo
-        showMessage("<span>Archivo para subir: "+fileName+", peso total: "+fileSize+" bytes.</span>");
+        showMessageE("<span>Archivo para subir: "+fileName+", peso total: "+fileSize+" bytes.</span>");
+    });
+
+    $('#audio').change(function()
+    {
+        //obtenemos un array con los datos del archivo
+        var file = $("#audio")[0].files[0];
+        //obtenemos el nombre del archivo
+        var fileName = file.name;
+        //obtenemos la extensión del archivo
+        fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1);
+        //obtenemos el tamaño del archivo
+        var fileSize = file.size;
+        //obtenemos el tipo de archivo image/png ejemplo
+        var fileType = file.type;
+        //mensaje con la información del archivo
+        showMessageA("<span>Archivo para subir: "+fileName+", peso total: "+fileSize+" bytes.</span>");
     });
 
     //al enviar el formulario
