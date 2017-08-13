@@ -10,7 +10,8 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
     //si no es así, lo creamos
     if(!is_dir($path)) 
         mkdir($path, 0777);
-     
+    
+    //chmod($file, 0777); 
     //comprobamos si el archivo ha subido
     //AGREGA EL ARCHIVO
     if ($file && move_uploaded_file($_FILES['archivo']['tmp_name'],$path.$file))

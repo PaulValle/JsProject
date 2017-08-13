@@ -93,6 +93,15 @@ var contCuento=6;
     });
 
     /*Guardar Cuento*/
+    $(".guard").click(function(){
+            var hola="vales verga"; 
+           $.ajax({url:'guardarJson.php',method:'post',data:{"identificador":hola},success: function(data) {
+                        alert(data);
+                       
+                    }});
+            
+    }); 
+
      $("#guardar").click(function(){
         var imagenesCuento=[];
         //esta bandera sirve para saber si todas las hojas estan llenas
@@ -116,7 +125,7 @@ var contCuento=6;
         //si todas las hojas estan llenas se puede guardar sino no
         if(flag==0){
            
-            var usuarios=[];
+          /*  var usuarios=[];
             usuarios=leer();
             var cuento= new Cuento();
             cuento.directo($("#nombre").val());
@@ -128,7 +137,15 @@ var contCuento=6;
              //alert(imagenesCuento.length);
             usuarios[0].cuentos.push(cuento); 
             alert("t"+usuarios[0].cuentos.length);
-            window.location.href = "../index.html";
+            let dataStr = JSON.stringify(usuarios);
+            let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+
+            //let exportFileDefaultName = 'data.json';
+            //let linkElement = $(".botonesHojas").append("<a href='"+dataUri+"' download='"+exportFileDefaultName+"'>Bajar</a>");*/
+            
+            
+            
+           // window.location.href = "../index.html";
             
         }
         

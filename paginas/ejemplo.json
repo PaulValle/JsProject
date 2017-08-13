@@ -1,0 +1,20 @@
+ {
+     "usuarios": 
+     [
+         {
+             "nombre": "Anna",
+             "user": "Meyers",
+             "pass": "images/img1.png"
+         },
+         {
+              "nombre": "Anna",
+             "user": "Meyers",
+             "pass": "images/img1.png"
+         },
+         {
+             "nombre": "Anna",
+             "user": "Meyers",
+             "pass": "images/img1.png"
+         }
+     ]
+ }
