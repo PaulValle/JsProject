@@ -240,7 +240,7 @@ span{font-size: 14px;
 }
 /* pauul */
 .cuentoTitulo{
-    color: skyblue;
+    color: #fed136;
     text-align: center;
 }
 
@@ -260,4 +260,11 @@ span{font-size: 14px;
     padding-top: 40px;
     width: 30%;
 }
-
+#estilofooter2 {
+    background-color: #0081eb;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    color: white;
+}
