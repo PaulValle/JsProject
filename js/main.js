@@ -666,6 +666,11 @@ function recibirCuento() {
             if(index==0){
                 $(".carousel-inner").find('.item').addClass('item active');
             }
+            $.each(elem.pagina, function (i, elem2) {
+                $("#audioPregunta").attr('src') = elem2.audio;
+                $("#img1").attr('src') = elem2.img1;
+                $("#img2").attr('src') = elem2.img2;
+            });
             
            // $(".carousel-indicators").append(" <li data-target='#myCarousel' data-slide-to='"+index+"'></li>");
         });
@@ -705,3 +710,6 @@ function enviar(btn) {
     localStorage.setItem("var", pasarVar);
     window.location = "cuento.html";
 };
+
+/*CARGAR ACTIVIDADES EN LOS CUENTOS*/
+
