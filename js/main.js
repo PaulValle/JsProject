@@ -144,40 +144,35 @@ $(".bHoja").click(function () {
 
 $("#SeleccionarP").hide();
 $("#SeleccionarP2").hide();
-$("#SeleccionarP3").hide();
 /*$(".bActividad").click(function () {
     alert("Hola");
 });*/
 
 
 //BOTONES PREHUNTAS/ACTIVIDADES
-//PREGUNTA 1
+//PREGUNTA 1 IMG
 $('.subirAct').click(function () {
-    alert("HOLA");
+    //alert("HOLA");
     $('#SeleccionarP').show();
+    $("#SeleccionarP2").hide();
 
 });
 
-//PREGUNTA 2
+//PREGUNTA 2 COLORES
 $('.subirAct2').click(function () {
-    alert("HOLA");
+    //alert("HOLA");
     $('#SeleccionarP2').show();
+    $("#SeleccionarP").hide();
 
 });
-
-/*Seleccionar Combo
-$('select#actividad').change(function(){
-    window.location = $(this).val();
-});
-*/
-
-
+ var preguntas = [];
+   
 $("#guardar").click(function () {
     var imagenesCuento = [];
     var audiosCuento = [];
 
-    var preguntas = [];
-    var pregunta = new Pregunta();
+    
+    
 
 
     //esta bandera sirve para saber si todas las hojas estan llenas
@@ -197,19 +192,6 @@ $("#guardar").click(function () {
         }
     });
 
-
-    if ($("#img1").attr("src") == undefined || $("#img2").attr("src") == undefined || $("audio").children().attr("src") == undefined || $(".respuesta").val() == undefined) {
-        flag++;
-        alert($("#img1").attr("src") + "imagen1" + $("#img2").attr("src") + "imagen2" + $("audio").children().attr("src") + "audio" + $(".respuesta").val() + "respuesta");
-    } else {
-        pregunta.directo($("#img1").attr("src"), $("#img2").attr("src"), $("audio").children().attr("src"), $(".respuesta").val());
-
-        preguntas.push(pregunta);
-    }
-
-
-
-
     //si todas las hojas estan llenas se puede guardar sino no
     if (flag == 0) {
 
@@ -217,11 +199,7 @@ $("#guardar").click(function () {
         usuarios = leer();
         var cuento = new Cuento();
         cuento.directo($("#nombre").val(), $("#descripcion").val(), $("#credito").val(), imagenesCuento, audiosCuento);
-
-        pregunta.directo($("#img1").attr("src"), $("#img2").attr("src"), $("audio").children().attr("src"), $(".respuesta").val());
-
-        preguntas.push(pregunta);
-
+        alert("ver: "+preguntas);
         cuento.pregunta=preguntas;
         //alert(usuarios);
         alert("Se guardo el cuento " + cuento.nombre);
@@ -229,8 +207,6 @@ $("#guardar").click(function () {
         usuarios[0].cuentos.push(cuento);
 
         // usuarios[0].cuentos[usuarios[0].cuentos.length - 1].pregunta.push(preguntas);
-
-
 
 
         //alert("t"+usuarios[0].cuento.length);
@@ -256,19 +232,26 @@ $("#guardar").click(function () {
 
 /*GUARDAR PREGUNTA EN JSON*/
 $("#btnGuardarP1").click(function () {
-    alert("chao");
-    var img1;
-    var img2;
-    var audio;
-    var respuesta;
-    var flag;
+    
+    var img1 = $(".fondoP1").find("img").attr("src");
+    var img2 = $(".fondoP2").find("img").attr("src");
+    var audio = $(".fondoAudioP").find("audio").children().attr("src");
+    var respuesta = $(".respuesta").val();
+    
+    if(img1 == undefined || img2 == undefined || audio == undefined || respuesta == undefined){
+        alert("Completa la actividad");
+        
+    }else{
+        alert("Se guardo la actividad!");
+   
+        var pregunta = new Pregunta();
+        pregunta.directo(img1,img2, audio, respuesta);
+        preguntas.push(pregunta);
 
-    img1 = $(".fondoP1").find("img").attr("src");
-    img2 = $(".fondoP2").find("img").attr("src");
-    audio = $(".fondoAudioP").find("audio").children().attr("src");
-    respuesta = $(".respuesta").val();
-    alert(respuesta);
-    $("#SeleccionarP").hide();
+        $("#SeleccionarP").hide();
+        $("#SeleccionarP2").hide();
+    }
+   
 });
 
 /*FIN GUARDAR PREGUNTA EN JSON*/
@@ -675,7 +658,6 @@ function recibirCuento() {
                                     <img src='" + elem.imagen + "' alt='ImagenCuento'>\
                                     <div class='container'>\
                                         <div class='carousel-caption'>\
-<<<<<<< HEAD
                                             <audio controls class='ocultar'><source src='"+elem.audio+"'></audio>\
                                             <button id='reproducir' onclick='reproducir(this)'><img src='../img/repro.png'></button>\
                                         </div>\
@@ -686,30 +668,10 @@ function recibirCuento() {
             }
             
            // $(".carousel-indicators").append(" <li data-target='#myCarousel' data-slide-to='"+index+"'></li>");
-        });}
-       
-=======
-                                            <audio controls><source src='" + elem.audio + "'></audio>\
-                                        </div>\
-                                    </div>\
-                                    </div>");
-                if (index == 0) {
-                    $(".carousel-inner").find('.item').addClass('item active');
-                }
-
-                $(".carousel-indicators").append(" <li data-target='#myCarousel' data-slide-to='" + index + "'></li>");
-            });
+        });
         }
-        /*$("#ListaCuento").append("<div class='col-md-4 portfolio-item'>\
-                <div id='idh4'>\
-                        <button id='lo' onclick='enviar(this)'>\
-                        <img id='imghome' src='" + elem.pagina[0].imagen + "' alt=''>\
-                        <h3 id='idh3'>" + elem.nombre + "</h3>\
-                        <p>" + elem.descripcion + "</p>\
-                        </button>\
-                </div></div>");*/
->>>>>>> 51bc83ac5e82228f75824b176a465abbf612cc53
-    });
+       
+       });
 
 
 };
