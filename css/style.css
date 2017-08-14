@@ -7,6 +7,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     border: none;
+    width:90%;
+    height:200px;;
 }
 
 #index {
@@ -18,12 +20,18 @@ body {
 
 #idh3 {
     text-align: center;
-    color: white;
+    color: skyblue;
 }
 
 #idh4 {
     text-align: center;
     color: white;
+    height: 300px;
+}
+
+#idh4 p {
+    color: black;
+    font-size: 16px;
 }
 
 
