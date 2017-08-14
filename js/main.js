@@ -104,27 +104,34 @@ $(".bHoja").click(function () {
 });
 
 
-/*PREGUNTAS*/
-/*Preguntas BOTON*/
- $("#SeleccionarP").hide(); 
-$(".bActividad").click(function () {
+/*DIV PREGUNTAS*/
+
+$("#SeleccionarP").hide(); 
+$("#SeleccionarP2").hide();
+$("#SeleccionarP3").hide();
+ /*$(".bActividad").click(function () {
     alert("Hola");
-});
+});*/
 
 
-
+//BOTONES PREHUNTAS/ACTIVIDADES
 $('.subirAct').click(function(){
     alert("HOLA");
     $('#SeleccionarP').show();
     
 });
 
+$('.subirAct2').click(function(){
+    alert("HOLA");
+    $('#SeleccionarP2').show();
+    
+});
 
-/*Seleccionar Combo*/
+/*Seleccionar Combo
 $('select#actividad').change(function(){
     window.location = $(this).val();
 });
-
+*/
 
 
 $("#guardar").click(function () {
@@ -219,6 +226,39 @@ $('#imagen').change(function () {
     showMessageE("<span>Archivo para subir: " + fileName + ", peso total: " + fileSize + " bytes.</span>");
 });
 
+//IMAGEN PREGUNTA 1
+$('#imagen1').change(function () {
+    //obtenemos un array con los datos del archivo
+    var file = $("#imagen1")[0].files[0];
+    //obtenemos el nombre del archivo
+    var fileName = file.name;
+    //obtenemos la extensión del archivo
+    fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1);
+    //obtenemos el tamaño del archivo
+    var fileSize = file.size;
+    //obtenemos el tipo de archivo image/png ejemplo
+    var fileType = file.type;
+    //mensaje con la información del archivo
+    //showMessageE("<span>Archivo para subir: " + fileName + ", peso total: " + fileSize + " bytes.</span>");
+});
+
+$('#imagen2').change(function () {
+    //obtenemos un array con los datos del archivo
+    var file = $("#imagen2")[0].files[0];
+    //obtenemos el nombre del archivo
+    var fileName = file.name;
+    //obtenemos la extensión del archivo
+    fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1);
+    //obtenemos el tamaño del archivo
+    var fileSize = file.size;
+    //obtenemos el tipo de archivo image/png ejemplo
+    var fileType = file.type;
+    //mensaje con la información del archivo
+    //showMessageE("<span>Archivo para subir: " + fileName + ", peso total: " + fileSize + " bytes.</span>");
+});
+
+//FINAL PREGUNTAS
+
 $('#audio').change(function () {
     //obtenemos un array con los datos del archivo
     var file = $("#audio")[0].files[0];
@@ -246,7 +286,7 @@ $('#audioAP').change(function () {
     //obtenemos el tipo de archivo image/png ejemplo
     var fileType = file.type;
     //mensaje con la información del archivo
-    showMessageP("<span>Archivo para subir: " + fileName + ", peso total: " + fileSize + " bytes.</span>");
+    //showMessageP("<span>Archivo para subir: " + fileName + ", peso total: " + fileSize + " bytes.</span>");
 });
 
 //al enviar el formulario
@@ -288,6 +328,7 @@ $('.subirImg').click(function () {
         }
     });
 });
+
 
 
 //AUDIOS
@@ -374,6 +415,87 @@ $('.subirAudioP').click(function () {
     });
 });
 
+//CARGA DE ARCHIVO PREGUNTA 1
+
+//al enviar el formulario
+$('.subirImgP').click(function () {
+    //información del formulario
+    var formData = new FormData($(".formularioAP2")[0]);
+    var message = "";
+    //hacemos la petición ajax  
+    $.ajax({
+        url: 'subir.php',
+        type: 'POST',
+        // Form data
+        //datos del formulario
+        data: formData,
+        //necesario para subir archivos via ajax
+        cache: false,
+        contentType: false,
+        processData: false,
+        //mientras enviamos el archivo
+        beforeSend: function () {
+           // message = $("<span>Subiendo la imagen, por favor espere...</span>");
+            //showMessageE(message)
+        },
+        //una vez finalizado correctamente
+        success: function (data) {
+           // message = $("<span>La imagen ha subido correctamente.</span>");
+            //showMessageE(message);
+            if (isImage(fileExtension)) {
+                $(".fondoP1").html("<img id='draggable' class='ui-widget-content' src='../img/cuentos/" + data + "' />");
+                $("#draggable").draggable({
+                    revert: true
+                });
+            }
+        },
+        //si ha ocurrido un error
+        error: function () {
+            message = $("<span>Ha ocurrido un error.</span>");
+            //showMessageE(message);
+        }
+    });
+});
+
+
+$('.subirImgP2').click(function () {
+    //información del formulario
+    var formData = new FormData($(".formularioAP3")[0]);
+    var message = "";
+    //hacemos la petición ajax  
+    $.ajax({
+        url: 'subir.php',
+        type: 'POST',
+        // Form data
+        //datos del formulario
+        data: formData,
+        //necesario para subir archivos via ajax
+        cache: false,
+        contentType: false,
+        processData: false,
+        //mientras enviamos el archivo
+        beforeSend: function () {
+           // message = $("<span>Subiendo la imagen, por favor espere...</span>");
+            //showMessageE(message)
+        },
+        //una vez finalizado correctamente
+        success: function (data) {
+           // message = $("<span>La imagen ha subido correctamente.</span>");
+            //showMessageE(message);
+            if (isImage(fileExtension)) {
+                $(".fondoP2").html("<img id='draggable' class='ui-widget-content' src='../img/cuentos/" + data + "' />");
+                $("#draggable").draggable({
+                    revert: true
+                });
+            }
+        },
+        //si ha ocurrido un error
+        error: function () {
+            message = $("<span>Ha ocurrido un error.</span>");
+            //showMessageE(message);
+        }
+    });
+});
 
 
 //como la utilizamos demasiadas veces, creamos una función para 
@@ -391,6 +513,7 @@ function showMessageP(message) {
     $(".messagesP").html("").show();
     $(".messagesP").html(message);
 }
+
 //comprobamos si el archivo a subir es una imagen
 //para visualizarla una vez haya subido
 function isImage(extension) {
