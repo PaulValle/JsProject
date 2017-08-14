@@ -563,7 +563,6 @@ function sliderDrop(){
 function leerCuento(){
     var userArray = [];
     userArray = leer();
-    //var hola="asd";
     alert("Disfruta de todos los cuentos!" +userArray)
     $.each(userArray[0].cuentos, function (index, elem) {
         
@@ -578,33 +577,52 @@ function leerCuento(){
     });
 };
 
-
-$('#ListaCuento').ready(function() {
-
-    leerCuento();
-});
-
-function pasarVariables(pagina, nombres) {
-   // pagina += "?";
-    alert(nombres);
-   
-};
-
-function recibir() {
+//CUENTO
+function recibirCuento() {
     var j=localStorage.getItem("var")
-    alert(j);
+    //alert(j);
+    var userArray = [];
+    userArray = leer();
+    
+    alert("Disfruta del cuento!" +userArray)
+    $.each(userArray[0].cuentos, function (index, elem) {
+        if(elem.nombre==j){
+        //alert("oki");
+        $(".cuentoTitulo").html(elem.nombre);
+        $(".descripcion").html(elem.descripcion);
+        $(".credito").html(elem.credito);
+        $.each(elem.pagina, function (index, elem) {
+            $(".carousel-inner").append("<div class='item'> \
+                                    <img src='"+elem.imagen+"' alt='ImagenCuento'>\
+                                    <div class='container'>\
+                                        <div class='carousel-caption'>\
+                                            <audio controls><source src='"+elem.audio+"'></audio>\
+                                        </div>\
+                                    </div>\
+                                    </div>");
+            if(index==0){
+                $(".carousel-inner").find('.item').addClass('item active');
+            }
+            
+            $(".carousel-indicators").append(" <li data-target='#myCarousel' data-slide-to='"+index+"'></li>");
+        });}
+        /*$("#ListaCuento").append("<div class='col-md-4 portfolio-item'>\
+                <div id='idh4'>\
+                        <button id='lo' onclick='enviar(this)'>\
+                        <img id='imghome' src='" + elem.pagina[0].imagen + "' alt=''>\
+                        <h3 id='idh3'>" + elem.nombre + "</h3>\
+                        <p>" + elem.descripcion + "</p>\
+                        </button>\
+                </div></div>");*/
+    });
+    
     
 };
-$("#leerCnto").click(function () {
-    recibir();
-});
+
+//PASAR VARIABLE
 function enviar(btn) {
-   // alert(nombre);
-   alert($(btn).find('h3').html());
-    
-   var hermosaId=$(btn).find('h3').html();
-   alert(hermosaId);
-   localStorage.setItem("var",hermosaId);
+   var pasarVar=$(btn).find('h3').html();
+   localStorage.setItem("var",pasarVar);
    window.location="cuento.html";
 };
 
