@@ -108,7 +108,7 @@
 
         <div class="col-md-10 col-sm-10">
             <div class="nav-dots">
-               
+
                 <li data-target="#myCarousel" data-slide-to="0" class="active nav-dot">
                     <div class="hojas">Portada</div>
                 </li>
@@ -213,6 +213,8 @@
         <!-- FIN SUBIR AUDIOS-->
 
 
+        <!--PREGUNTAS-->
+
         <!-- CREAR PREGUNTAS-->
         <div class="col-md-12 col-sm-12">
 
@@ -223,34 +225,22 @@
 
                 <div class="panel-body">
                     <label>Elige una actividad:</label>
-
                     <input type="button" class="subirAct" value="Seleccionar Personaje">
-
                     <input type="button" class="subirAct2" value="  Seleccionar Colores  " />
-
-                    <input type="button" class="subirAct3" value="      Crear Pregunta      " />
-
-                    <!--div para visualizar mensajes-->
-
-
                 </div>
-
             </div>
         </div>
 
         <!-- PREGUNTA SELECCIONAR PERSONAJE-->
-
         <div id="SeleccionarP">
             <div class="col-md-12 col-sm-12">
                 <br>
-
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">SELECCIONAR PERSONAJE</h3>
                     </div>
 
                     <div class="panel-body">
-
                         <div class="col-md-8 col-sm-8 fondoAudioP">
 
                         </div>
@@ -286,6 +276,7 @@
                             <!--div para visualizar en el caso de imagen-->
                             <div class="showImage"></div>
                             <div class="col-md-4 col-sm-4 fondoP1">
+                                <p>1</p>
                             </div>
                         </div>
 
@@ -304,40 +295,37 @@
                             <!--div para visualizar en el caso de imagen-->
                             <div class="showImage"></div>
                             <div class="col-md-4 col-sm-4 fondoP2">
-
+                                <p>2</p>
                             </div>
                         </div>
-                        
-                         <div class="col-md-4 col-sm-4">
-                           <label>¿Que numero de imagen es correcta?</label>
-                            <input type="number" name="quantity" min="1" max="2">
-                        </div>
-                        
+
                         <div class="col-md-4 col-sm-4">
-                           <label>¿Que numero de imagen es correcta?</label>
-                        <button type="button" id="btnGuardarP1">Guardar</button>
+                            <label>¿Que numero de imagen es correcta?</label>
+                          
+                             <input type="text" name="respuesta" class="respuesta">
+                        </div>
+
+                        <div class="col-md-4 col-sm-4">
+                         
+                            <button type="button" id="btnGuardarP1">Guardar</button>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
-        <!-- FIN CREAR PREGUNTAS-->
 
-   <!-- PREGUNTA COLOR-->
+
+        <!-- PREGUNTA SELECCIONAR COLOR-->
 
         <div id="SeleccionarP2">
             <div class="col-md-12 col-sm-12">
                 <br>
-
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">SELECCIONAR PERSONAJE</h3>
                     </div>
 
                     <div class="panel-body">
-
                         <div class="col-md-8 col-sm-8 fondoAudioP">
 
                         </div>
@@ -356,7 +344,6 @@
                         </div>
                     </div>
                     <hr>
-
                     <div class="panel-body">
                         <div class="col-md-4 col-sm-4">
                             <form enctype="multipart/form-data" class="formularioAP2">
@@ -394,36 +381,32 @@
 
                             </div>
                         </div>
-                        
-                         <div class="col-md-4 col-sm-4">
-                           <label>¿Que numero de imagen es correcta?</label>
+
+                        <div class="col-md-4 col-sm-4">
+                            <label>¿Que numero de imagen es correcta?</label>
                             <input type="number" name="quantity" min="1" max="2">
                         </div>
-                        
+
                         <div class="col-md-4 col-sm-4">
-                           <label>¿Que numero de imagen es correcta?</label>
-                        <button type="button" id="btnGuardarP2">Guardar</button>
+                            <label>¿Que numero de imagen es correcta?</label>
+                            <button type="button" id="btnGuardarP2">Guardar</button>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
-   
-   
+        <!-- FIN CREAR PREGUNTAS-->
+
     </div>
     <footer id="estilofooter2" class="text-center">
-    <div class="col-lg-12">
-        Copyright &copy; Your Website 2016
-    </div>
-
-</footer>
+        <div class="col-lg-12">
+            Copyright &copy; Your Website 2016
+        </div>
+    </footer>
     <!-- Fin Container -->
 
     <script src="../js/main.js"></script>
 
 </body>
-
 
 </html>
