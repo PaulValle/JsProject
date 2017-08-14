@@ -335,6 +335,8 @@ audio source{
 #slabel{
  color: darkslateblue;
 }
+
+/*ACTIVIDADES*/
 #actividades{
     background-color: aqua;
 }
@@ -361,4 +363,10 @@ audio source{
     padding: 1px;
     width: 100%;
     height: 100%;
+}
+#btnGuardarP2, #btnGuardarP1{
+    background-color: greenyellow;
+    font-size: 25px;
+    width: 180px;
+    border-radius: 3px;
 }
