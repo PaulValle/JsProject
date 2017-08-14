@@ -664,7 +664,7 @@ function leerCuento() {
                 </div></div>");
     });
 };
-
+var idRespuesta;
 //CUENTO
 function recibirCuento() {
     var j = localStorage.getItem("var")
@@ -692,14 +692,29 @@ function recibirCuento() {
             if(index==0){
                 $(".carousel-inner").find('.item').addClass('item active');
             }
-            $.each(elem.pagina, function (i, elem2) {
-                $("#audioPregunta").attr('src') = elem2.audio;
-                $("#img1").attr('src') = elem2.img1;
-                $("#img2").attr('src') = elem2.img2;
-            });
+                
+            
+            
             
            // $(".carousel-indicators").append(" <li data-target='#myCarousel' data-slide-to='"+index+"'></li>");
         });
+            $(".carousel-inner").append("<div class='item'> \
+                                    <img src='../img/fondointerrogacion.jpg' alt='ImagenCuento'>\
+                                    <div class='container'>\
+                                        <div class='carousel-caption'>\
+                                            <button id='reproducir' onclick='mst()'><img src='../img/interrogacion.png'></button>\
+                                        </div>\
+                                    </div>\
+                                    </div>");
+            $.each(elem.pregunta, function (i, elem2) {
+                /*$("#audioPregunta").attr('src') = elem2.audio;
+                $("#img1").attr('src') = elem2.img1;
+                $("#img2").attr('src') = elem2.img2;*/
+                $(".fondoPreguntas").html("<button id='valImg1' onclick = 'validarimg1()'><img id='img1' src='" + elem2.img1 + "' alt=''></button>\
+                                            <button id='valImg2' onclick = 'validarimg1()'><img id='img2' src='" + elem2.img2 + "' alt=''></button>");
+                $(".fondoAudio").append("<audio controls id='audioPregunta' class='ocultar'><source src='"+ elem2.audio+"'></audio>");
+                idRespuesta = elem2.respuesta;
+            });
         }
        
        });
@@ -713,22 +728,22 @@ function reproducir(btn) {
 };
 function reproducirPregunta(btn) {
    
-   //$(btn).parent().find('audio')[0].play();
+   $("#reproducir").parent().find('audio')[0].play();
 };
 
 /*PREGUNTAS*/
-$('#mst').click(function () {
+function mst() {
     $("#preguntas").removeClass("ocultar");
     $("#preguntas").addClass("mostrar");
     $("#myCarousel").addClass("ocultar");
-});
+};
 
-$('#ocl').click(function () {
+function ocl() {
     $("#myCarousel").removeClass("ocultar");
     $("#myCarousel").addClass("mostrar");
     $("#preguntas").removeClass("mostrar");
     $("#preguntas").addClass("ocultar");
-});
+};
 
 //PASAR VARIABLE
 function enviar(btn) {
@@ -739,3 +754,21 @@ function enviar(btn) {
 
 /*CARGAR ACTIVIDADES EN LOS CUENTOS*/
 
+function validarimg1(){
+     if(idRespuesta == 1){
+        alert("FELICIDADES!!! LO CONSEGUISTE");
+        ocl();
+       }else{
+        alert("La respuesta era la otra opcion :c");
+        ocl(); 
+       }
+}
+function validarimg2(){
+     if(idRespuesta == 1){
+        alert("FELICIDADES!!! LO CONSEGUISTE");
+        ocl();
+       }else{
+        alert("La respuesta era la otra opcion :c");
+        ocl(); 
+       }
+}
