@@ -440,20 +440,49 @@ function sliderDrop(){
 function leerCuento(){
     var userArray = [];
     userArray = leer();
+    //var hola="asd";
     alert("Disfruta de todos los cuentos!" +userArray)
     $.each(userArray[0].cuentos, function (index, elem) {
+        
         $("#ListaCuento").append("<div class='col-md-4 portfolio-item'>\
                 <div id='idh4'>\
-                    <a href='#'>\
+                        <button id='lo' onclick='enviar(this)'>\
                         <img id='imghome' src='" + elem.pagina[0].imagen + "' alt=''>\
                         <h3 id='idh3'>" + elem.nombre + "</h3>\
                         <p>" + elem.descripcion + "</p>\
-                    </a>\
-                </div>\
-            </div>");
+                        </button>\
+                </div></div>");
     });
 };
 
-$(function() {
+
+$('#ListaCuento').ready(function() {
+
     leerCuento();
 });
+
+function pasarVariables(pagina, nombres) {
+   // pagina += "?";
+    alert(nombres);
+   
+};
+
+function recibir() {
+    var j=localStorage.getItem("var")
+    alert(j);
+    
+};
+$("#leerCnto").click(function () {
+    recibir();
+});
+function enviar(btn) {
+   // alert(nombre);
+   alert($(btn).find('h3').html());
+    
+   var hermosaId=$(btn).find('h3').html();
+   alert(hermosaId);
+   localStorage.setItem("var",hermosaId);
+   window.location="cuento.html";
+};
+
+  
