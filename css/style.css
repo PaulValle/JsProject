@@ -104,17 +104,24 @@ body {
     width: 100%;
     height: 500px;
     background-color: white;
-    background-size: 100% 100%;}
-
+    
+    text-align: center;
+}
+        
 .escenas{
-    padding: 2px;
-    margin: 2px;
+   
+    text-align: center;
+}
+
+.escenas audio{
+    z-index: 0;
 }
 
 .escenas img{
-    width: 100%;
-    height: 500px;
-    
+    width: 98%;
+    height: 450px;
+    padding: 0;
+    float: left;
 }
 
 .myCarousel img{ 

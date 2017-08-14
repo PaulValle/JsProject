@@ -1,10 +1,11 @@
 <?php
 $data = $_REQUEST['identificador'];
+$datos = json_encode($data);
 $file = 'datos.json';
 
-if (isset($data)) {
+if (isset($datos)) {
     $fp = fopen($file, 'w');
-    fwrite($fp, utf8_decode($data));
+    fwrite($fp, utf8_decode($datos));
     fclose($fp);
     //chmod($file, 0777);
     echo 'Se han guardado correctamente la información en el txt!';
