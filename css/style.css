@@ -23,6 +23,7 @@ body {
 #idh3 {
     text-align: center;
     color: skyblue;
+    max-width: 90%;
 }
 
 #idh4 {
@@ -34,6 +35,7 @@ body {
 #idh4 p {
     color: black;
     font-size: 16px;
+    max-width: 90%;
 }
 
 
