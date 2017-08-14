@@ -3,6 +3,10 @@
      "cuentos":
      [
          {"nombre":"Los tres cerditos","descripcion":"Cuento infantil con moraleja para incentivar el trabajo","credito":"Tomado de guiainfantil.com",
+          "pregunta":
+          [
+              {"img1":"..\/img\/cuentos\/opcion1P1.jpg","img2":"..\/img\/cuentos\/opcion2P1.jpg","audio":"..\/img\/cuentos\/Pregunta_01.mp3","respuesta":"1"}
+          ],
           "pagina":
           [
               {"imagen":"..\/img\/cuentos\/cerditos1.jpg","audio":"..\/img\/cuentos\/cerditos1.mp3"},{"imagen":"..\/img\/cuentos\/cerditos2.jpg","audio":"..\/img\/cuentos\/cerditos2.mp3"},{"imagen":"..\/img\/cuentos\/cerditos3.jpg","audio":"..\/img\/cuentos\/cerditos3.mp3"},{"imagen":"..\/img\/cuentos\/cerditos4.jpg","audio":"..\/img\/cuentos\/cerditos4.mp3"},{"imagen":"..\/img\/cuentos\/cerditos5.jpg","audio":"..\/img\/cuentos\/cerditos5.mp3"},{"imagen":"..\/img\/cuentos\/cerditos6.jpg","audio":"..\/img\/cuentos\/cerditos6.mp3"},{"imagen":"..\/img\/cuentos\/cerditos7.jpg","audio":"..\/img\/cuentos\/cerditos7.mp3"},{"imagen":"..\/img\/cuentos\/cerditos8.jpg","audio":"..\/img\/cuentos\/cerditos8.mp3"},{"imagen":"..\/img\/cuentos\/cerditos9.jpg","audio":"..\/img\/cuentos\/cerditos9.mp3"},{"imagen":"..\/img\/cuentos\/cerditos10.jpg","audio":"..\/img\/cuentos\/cerditos10.mp3"},{"imagen":"..\/img\/cuentos\/cerditos11.jpg","audio":"..\/img\/cuentos\/cerditos11.mp3"},{"imagen":"..\/img\/cuentos\/cerditos12.jpg","audio":"..\/img\/cuentos\/cerditos12.mp3"},{"imagen":"..\/img\/cuentos\/cerditos13.jpg","audio":"..\/img\/cuentos\/cerditos13.mp3"},{"imagen":"..\/img\/cuentos\/cerditos14.jpg","audio":"..\/img\/cuentos\/cerditos14.mp3"},{"imagen":"..\/img\/cuentos\/cerditos15.jpg","audio":"..\/img\/cuentos\/cerditos15.mp3"},{"imagen":"..\/img\/cuentos\/cerditos16.jpg","audio":"..\/img\/cuentos\/cerditos16.mp3"},{"imagen":"..\/img\/cuentos\/cerditos17.jpg","audio":"..\/img\/cuentos\/cerditos17.mp3"},{"imagen":"..\/img\/cuentos\/cerditos18.jpg","audio":"..\/img\/cuentos\/cerditos18.mp3"}
