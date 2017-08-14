@@ -367,7 +367,7 @@ $('.subirAudioP').click(function () {
                 </audio>*/
             }
         },
-        //si ha ocurrido un error
+        //si ha ocurrido un err        
         error: function () {
             message = $("<span>Ha ocurrido un error.</span>");
             showMessageP(message);
@@ -438,7 +438,7 @@ function sliderDrop(){
 });}
 
 /* LISTAR CUENTOS */
-
+/*
 function leerCuentos(){
     var userArray = [];
     userArray = leer();
@@ -454,7 +454,7 @@ function leerCuentos(){
                     </a>
                 </div>
 
-            </div>*/
+            </div>
         $("#ListaCuento")children().append("<div class='col-md-4 portfolio-item'>\
                 <div id='idh4'>\
                     <a href='cuento.html'>\
@@ -466,4 +466,4 @@ function leerCuentos(){
             </div>");
     });
 }
-leerCuentos();
+leerCuentos();*/
