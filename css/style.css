@@ -133,6 +133,24 @@ body {
     font-size: 24px;
 }
 
+#reproducir, #reproducir img{
+    background-color: transparent;
+    text-align: center;
+    width: 150px;
+    height: 130px;
+    border: 0;
+    
+}
+
+#btnLista{
+    
+    background-color: transparent;
+    border: 0;
+	cursor:pointer;
+	font-weight:bold;
+	padding:0.2em 0;
+	outline:none;
+}
 .escenas{
    
     text-align: center;
@@ -144,7 +162,7 @@ body {
 
 .escenas img{
     width: 98%;
-    height: 450px;
+    height: 100%;
     padding: 0;
     float: left;
 }
@@ -251,7 +269,7 @@ body {
     height: 30%;
 }
 
-.fondoEscenas{
+.fondoEscenas .fondoPreguntas{
     background: aquamarine;
     height: 100%;
 }
@@ -261,13 +279,24 @@ body {
     width: 33%;
     height: 100%;
 }
+.fondoPreguntas img{
+    padding: 15px;
+    width: 40%;
+    height: 100%;
+}
+
 span{font-size: 14px;
     margin: 0px auto;
     background-color: greenyellow;
 }
 /**/
 
-
+audio{    
+    width: 90%;
+}
+audio source{
+    background: red;
+}
 
 /*Fin Pagina Crear Cuento*/
 #mainNav{

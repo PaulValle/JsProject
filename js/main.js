@@ -568,7 +568,7 @@ function leerCuento(){
         
         $("#ListaCuento").append("<div class='col-md-4 portfolio-item'>\
                 <div id='idh4'>\
-                        <button id='lo' onclick='enviar(this)'>\
+                        <button id='btnLista' onclick='enviar(this)'>\
                         <img id='imghome' src='" + elem.pagina[0].imagen + "' alt=''>\
                         <h3 id='idh3'>" + elem.nombre + "</h3>\
                         <p>" + elem.descripcion + "</p>\
@@ -596,7 +596,8 @@ function recibirCuento() {
                                     <img src='"+elem.imagen+"' alt='ImagenCuento'>\
                                     <div class='container'>\
                                         <div class='carousel-caption'>\
-                                            <audio controls><source src='"+elem.audio+"'></audio>\
+                                            <audio controls class='ocultar'><source src='"+elem.audio+"'></audio>\
+                                            <button id='reproducir' onclick='reproducir(this)'><img src='../img/repro.png'></button>\
                                         </div>\
                                     </div>\
                                     </div>");
@@ -604,20 +605,36 @@ function recibirCuento() {
                 $(".carousel-inner").find('.item').addClass('item active');
             }
             
-            $(".carousel-indicators").append(" <li data-target='#myCarousel' data-slide-to='"+index+"'></li>");
+           // $(".carousel-indicators").append(" <li data-target='#myCarousel' data-slide-to='"+index+"'></li>");
         });}
-        /*$("#ListaCuento").append("<div class='col-md-4 portfolio-item'>\
-                <div id='idh4'>\
-                        <button id='lo' onclick='enviar(this)'>\
-                        <img id='imghome' src='" + elem.pagina[0].imagen + "' alt=''>\
-                        <h3 id='idh3'>" + elem.nombre + "</h3>\
-                        <p>" + elem.descripcion + "</p>\
-                        </button>\
-                </div></div>");*/
+       
     });
     
     
 };
+function reproducir(btn) {
+   //$(btn).addClass('ocultar');
+   //$(btn).parent().find('audio').attr( "autoplay", "autoplay" );
+   $(btn).parent().find('audio')[0].play();
+};
+function reproducirPregunta(btn) {
+   
+   //$(btn).parent().find('audio')[0].play();
+};
+
+/*PREGUNTAS*/
+$('#mst').click(function () {
+    $("#preguntas").removeClass("ocultar");
+    $("#preguntas").addClass("mostrar");
+    $("#myCarousel").addClass("ocultar");
+});
+
+$('#ocl').click(function () {
+    $("#myCarousel").removeClass("ocultar");
+    $("#myCarousel").addClass("mostrar");
+    $("#preguntas").removeClass("mostrar");
+    $("#preguntas").addClass("ocultar");
+});
 
 //PASAR VARIABLE
 function enviar(btn) {
