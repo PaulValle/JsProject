@@ -153,6 +153,10 @@ $("#SeleccionarP2").hide();
 //PREGUNTA 1 IMG
 $('.subirAct').click(function () {
     //alert("HOLA");
+    $(".fondoP1").html("");
+    $(".fondoP2").html("");
+    $(".fondoAudioP").html("");
+    $(".respuesta").html("");
     $('#SeleccionarP').show();
     $("#SeleccionarP2").hide();
 
@@ -161,6 +165,10 @@ $('.subirAct').click(function () {
 //PREGUNTA 2 COLORES
 $('.subirAct2').click(function () {
     //alert("HOLA");
+    $(".fondoP1").html("");
+    $(".fondoP2").html("");
+    $(".fondoAudioP").html("");
+    $(".respuesta").html("");
     $('#SeleccionarP2').show();
     $("#SeleccionarP").hide();
 
@@ -170,10 +178,6 @@ $('.subirAct2').click(function () {
 $("#guardar").click(function () {
     var imagenesCuento = [];
     var audiosCuento = [];
-
-    
-    
-
 
     //esta bandera sirve para saber si todas las hojas estan llenas
     var flag = 0;
@@ -199,7 +203,7 @@ $("#guardar").click(function () {
         usuarios = leer();
         var cuento = new Cuento();
         cuento.directo($("#nombre").val(), $("#descripcion").val(), $("#credito").val(), imagenesCuento, audiosCuento);
-        alert("ver: "+preguntas);
+        alert("ver: "+ preguntas.length);
         cuento.pregunta=preguntas;
         //alert(usuarios);
         alert("Se guardo el cuento " + cuento.nombre);
@@ -254,6 +258,28 @@ $("#btnGuardarP1").click(function () {
    
 });
 
+$("#btnGuardarP2").click(function () {
+    
+    var img1 = $(".fondoP1").find("img").attr("src");
+    var img2 = $(".fondoP2").find("img").attr("src");
+    var audio = $(".fondoAudioP").find("audio").children().attr("src");
+    var respuesta = $(".respuesta").val();
+    
+    if(img1 == undefined || img2 == undefined || audio == undefined || respuesta == undefined){
+        alert("Completa la actividad");
+        
+    }else{
+        alert("Se guardo la actividad!");
+   
+        var pregunta = new Pregunta();
+        pregunta.directo(img1,img2, audio, respuesta);
+        preguntas.push(pregunta);
+
+        $("#SeleccionarP").hide();
+        $("#SeleccionarP2").hide();
+    }
+   
+});
 /*FIN GUARDAR PREGUNTA EN JSON*/
 
 
