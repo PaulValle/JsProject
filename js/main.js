@@ -368,3 +368,32 @@ function sliderDrop(){
 });}
 
 /* LISTAR CUENTOS */
+
+function leerCuentos(){
+    var userArray = [];
+    userArray = leer();
+    alert('entro a la funcion')
+    userArray[0].cuentos.each(function (index, elem) {
+        alert("each" + index);
+       /* <div class="col-md-4 portfolio-item">
+                <div id="idh4">
+                    <a href="cuento.html">
+                        <img id="imghome" src="../img/cuentos/Cerditos/cerditos12.jpg" alt="" width="200px">
+
+                        <h3 id="idh3">El Dragoncito feo</h3>
+                    </a>
+                </div>
+
+            </div>*/
+        $("#ListaCuento")children().append("<div class='col-md-4 portfolio-item'>\
+                <div id='idh4'>\
+                    <a href='cuento.html'>\
+                        <img id='imghome' src='" + elem.pagina[0].imagen + "' alt="" width='200px'>\
+
+                        <h3 id='idh3'>" + elem.nombre + "</h3>\
+                    </a>\
+                </div>\
+            </div>");
+    });
+}
+leerCuentos();
