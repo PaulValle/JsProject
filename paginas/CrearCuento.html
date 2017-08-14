@@ -214,39 +214,61 @@
 
         <!-- CREAR PREGUNTAS-->
         <div class="col-md-12 col-sm-12">
-            <br>
-            <br>
+
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">ACTIVIDADES</h3>
                 </div>
-                <div class="panel-body">
 
-                    <div class="col-md-8 col-sm-8 fondoAudio">
+                <div class="panel-body">
+                    <label>Elige una actividad:</label>
+
+                    <input type="button" class="subirAct" value="Seleccionar Personaje">
+
+                    <input type="button" class="subirAct2" value="  Seleccionar Colores  " />
+
+                    <input type="button" class="subirAct3" value="      Crear Pregunta      " />
+
+                    <!--div para visualizar mensajes-->
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- PREGUNTA SELECCIONAR PERSONAJE-->
+
+        <div id="SeleccionarP">
+            <div class="col-md-12 col-sm-12">
+                <br>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">SELECCIONAR PERSONAJE</h3>
+                    </div>
+                    
+                   <div class="panel-body">
+
+                    <div class="col-md-8 col-sm-8 fondoAudioP">
 
                     </div>
                     <div class="col-md-4 col-sm-4">
-
-                        <!-- COMBO PREGUNTAS-->
-                        <select title="Selecciona una Actividad" name="actividad" id="actividad">
-                            <option value="" disabled selected>Selecciona una actividad</option>
-                            <option value="AdivinaPersonaje.html"> Adivina Personaje
-                                <option value="AdivinaPersonaje.html"> Adivina Color
-                                    <option value="AdivinaPersonaje.html"> Selecciona Personajes
-                        </select>
-                        <br> <br>
-                        <form enctype="multipart/form-data" class="formularioAct">
-                            
-                            <input type="button" class="subirAct" value="Guardar Actividad" />
+                        <form enctype="multipart/form-data" class="formularioAP">
+                            <input name="archivo" type="file" id="audioAP" />
+                            <br />
+                            <br />
+                            <input type="button" class="subirAudioP" value="Subir audio"/>
                             <br />
                         </form>
                         <!--div para visualizar mensajes-->
-                        <div class="messagesA"></div>
+                        <div class="messagesP"></div>
                         <br />
                         <br />
                         <!--div para visualizar en el caso de imagen-->
                         <div class="showImage"></div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

@@ -107,9 +107,19 @@ $(".bHoja").click(function () {
 
 /*PREGUNTAS*/
 /*Preguntas BOTON*/
+ $("#SeleccionarP").hide(); 
 $(".bActividad").click(function () {
     alert("Hola");
 });
+
+
+
+$('.subirAct').click(function(){
+    alert("HOLA");
+    $('#SeleccionarP').show();
+    
+});
+
 
 /*Seleccionar Combo*/
 $('select#actividad').change(function(){
@@ -225,6 +235,21 @@ $('#audio').change(function () {
     showMessageA("<span>Archivo para subir: " + fileName + ", peso total: " + fileSize + " bytes.</span>");
 });
 
+$('#audioAP').change(function () {
+    //obtenemos un array con los datos del archivo
+    var file = $("#audioAP")[0].files[0];
+    //obtenemos el nombre del archivo
+    var fileName = file.name;
+    //obtenemos la extensión del archivo
+    fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1);
+    //obtenemos el tamaño del archivo
+    var fileSize = file.size;
+    //obtenemos el tipo de archivo image/png ejemplo
+    var fileType = file.type;
+    //mensaje con la información del archivo
+    showMessageP("<span>Archivo para subir: " + fileName + ", peso total: " + fileSize + " bytes.</span>");
+});
+
 //al enviar el formulario
 $('.subirImg').click(function () {
     //información del formulario
@@ -308,6 +333,47 @@ $('.subirAudio').click(function () {
     });
 });
 
+//AUDIO PREGUNTAS
+
+$('.subirAudioP').click(function () {
+    //información del formulario
+    var formData = new FormData($(".formularioAP")[0]);
+    var message = "";
+    //hacemos la petición ajax  
+    $.ajax({
+        url: 'subir.php',
+        type: 'POST',
+        // Form data
+        //datos del formulario
+        data: formData,
+        //necesario para subir archivos via ajax
+        cache: false,
+        contentType: false,
+        processData: false,
+        //mientras enviamos el archivo
+        beforeSend: function () {
+            message = $("<span\>Subiendo el audio, por favor espere...</span>");
+            showMessageP(message)
+        },
+        //una vez finalizado correctamente
+        success: function (data) {
+            message = $("<span\>El audio ha subido correctamente.</span>");
+            showMessageP(message);
+            if (isImage(fileExtension)) {
+                $(".fondoAudioP").append("<audio controls><source src='../img/cuentos/" + data + "' type='audio/mp3'></audio>");
+                console.log(data);
+                /*<audio controls>
+                              <source src="../img/cuentos/000938162_prev.mp3" type="audio/mp3">
+                </audio>*/
+            }
+        },
+        //si ha ocurrido un error
+        error: function () {
+            message = $("<span>Ha ocurrido un error.</span>");
+            showMessageP(message);
+        }
+    });
+});
 
 
 
@@ -321,6 +387,10 @@ function showMessageE(message) {
 function showMessageA(message) {
     $(".messagesA").html("").show();
     $(".messagesA").html(message);
+}
+function showMessageP(message) {
+    $(".messagesP").html("").show();
+    $(".messagesP").html(message);
 }
 //comprobamos si el archivo a subir es una imagen
 //para visualizarla una vez haya subido
