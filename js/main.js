@@ -21,25 +21,43 @@ class Cuento {
     conObj(obj) {
         //alert(obj.nombre);
         this.nombre = obj.nombre;
-        var imagenes = [];
-        $.each(obj.imagenes, function (i, emp) {
-            imagenes.push(emp.url);
+        this.descripcion = obj.descripcion;
+        this.credito = obj.credito;
+        var pagina= [];
+         $.each(obj.pagina, function (i, emp) {
+            var pg= new Pagina();
+            pg.conObj(emp);
+            pagina.push(pg);
         });
-        this.imagenes = imagenes;
-        var audios = [];
-        $.each(obj.audios, function (i, emp) {
-            audios.push(emp.url);
-        });
-        this.audios = audios;
+        this.pagina = pagina;
+        
     }
-    directo(nombre) {
+    directo(nombre, descripcion, credito, img, aud) {
         this.nombre = nombre;
-        var imagenes = [];
-        this.imagenes = imagenes;
-        var audios = [];
-        this.audios = audios;
+        this.descripcion = descripcion;
+        this.credito = credito;
+        var pagina = [];
+         $.each(img, function (i, emp) {
+            var pg= new Pagina();
+            pg.directo(emp,aud[i]);
+            pagina.push(pg); 
+        });
+        
+        this.pagina = pagina;
+        
     }
 };
+
+class Pagina {
+    conObj(obj) {
+        this.imagen = obj.imagen;
+        this.audio = obj.audio;
+    }
+    directo(img,aud){
+        this.imagen = img;
+        this.audio = aud;
+    }
+}
 
 
 var contCuento = 6;
@@ -51,17 +69,13 @@ function leer() {
 
     $.getJSON('datos.json', function (data) {
 
-        $.each(data.usuarios, function (i, emp) {
-            //alert("hola");
+        $.each(data, function (i, emp) {
+            alert(emp);
             //var usr= new Usuario();
             usuarios.push(new Usuario(emp));
         });
-        /*
-        $.each(usuarios,function(i,emp){ 
-            alert(emp.nombre);
-        });*/
-
     });
+    //alert(usuarios.length);
     return usuarios;
 
 };
@@ -76,8 +90,9 @@ $(".nHoja").click(function () {
                     </div>"
 
     $(".carousel-inner").append(texto);
-    $(".nav-dots").append("<li data-target='#myCarousel' data-slide-to=" + contCuento + " class='nav-dot'><div id='droppable' class='hojas'>" + contCuento + "</div></li>");
+    $(".nav-dots").append("<li data-target='#myCarousel' data-slide-to=" + contCuento + " class='nav-dot'><div class='hojas'>" + contCuento + "</div></li>");
     contCuento++;
+    sliderDrop();
 });
 /*Eliminar otra hoja*/
 
@@ -89,22 +104,6 @@ $(".bHoja").click(function () {
     $(".nav-dot:last").remove();
 });
 
-/*Guardar Cuento*/
-$(".guard").click(function () {
-    var hola = "vales verga";
-    $.ajax({
-        url: 'guardarJson.php',
-        method: 'post',
-        data: {
-            "identificador": hola
-        },
-        success: function (data) {
-            alert(data);
-
-        }
-    });
-
-});
 
 /*PREGUNTAS*/
 /*Preguntas BOTON*/
@@ -121,18 +120,22 @@ $('select#actividad').change(function(){
 
 $("#guardar").click(function () {
     var imagenesCuento = [];
+    var audiosCuento=[];
     //esta bandera sirve para saber si todas las hojas estan llenas
     var flag = 0;
     $(".escenas").each(function (index) {
 
-        var ruta = $(this).find("img").attr("src");
+        var rutaI = $(this).find("img").attr("src");
+        var rutaA = $(this).find("audio").children().attr("src");
+        //alert(rutaA);
         //alert("ruta: "+ruta);
-        if (ruta == undefined) {
+        if (rutaI == undefined || rutaA == undefined) {
             alert("Llena todas las hojas.");
             flag++;
             return false;
         } else {
-            imagenesCuento.push(ruta);
+            imagenesCuento.push(rutaI);
+            audiosCuento.push(rutaA);
 
         }
 
@@ -141,25 +144,33 @@ $("#guardar").click(function () {
     //si todas las hojas estan llenas se puede guardar sino no
     if (flag == 0) {
 
-        /*  var usuarios=[];
-          usuarios=leer();
-          var cuento= new Cuento();
-          cuento.directo($("#nombre").val());
-          alert("Se guardo el cuento "+cuento.nombre + usuarios);
-          alert("f "+usuarios[0].cuentos.length);
-           
-         
-          cuento.imagenes=imagenesCuento;
-           //alert(imagenesCuento.length);
-          usuarios[0].cuentos.push(cuento); 
-          alert("t"+usuarios[0].cuentos.length);
-          let dataStr = JSON.stringify(usuarios);
-          let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+      var usuarios=[];
+      usuarios=leer();
+      var cuento= new Cuento();
+      cuento.directo($("#nombre").val(),$("#descripcion").val(),$("#credito").val(),imagenesCuento,audiosCuento);
+      //alert(usuarios);
+      alert("Se guardo el cuento "+cuento.nombre);
+      //alert("f "+usuarios[0].cuento.length);
+      alert(usuarios);
+      usuarios[0].cuentos.push(cuento); 
+      //alert("t"+usuarios[0].cuento.length);
+      /*$.each(usuarios[0].cuentos[1].paginas, function (i, emp) {
 
-          //let exportFileDefaultName = 'data.json';
-          //let linkElement = $(".botonesHojas").append("<a href='"+dataUri+"' download='"+exportFileDefaultName+"'>Bajar</a>");*/
+        alert("img"+emp.imagen);
+         alert("aud"+emp.audio);
+      });*/
+     
+      $.ajax({
+          url: 'guardarJson.php',
+          method: 'post',
+          data: {
+                "identificador": usuarios
+          },
+          success: function (data) {
+                alert(data);
 
-
+          }
+      });
 
         // window.location.href = "../index.html";
 
@@ -282,11 +293,11 @@ $('.subirAudio').click(function () {
             message = $("<span\>El audio ha subido correctamente.</span>");
             showMessageA(message);
             if (isImage(fileExtension)) {
-                $(".fondoAudio").append("<audio controls><source src='../img/cuentos/" + data + "' type='audio/mp3'></audio>");
-                console.log(data);
-                /*<audio controls>
-                              <source src="../img/cuentos/000938162_prev.mp3" type="audio/mp3">
-                </audio>*/
+                $(".fondoAudio").html("<audio id='draggableAudio' controls><source src='../img/cuentos/" + data + "' type='audio/mp3'></audio>");
+                $("#draggableAudio").draggable({
+                    revert: true
+                });
+                
             }
         },
         //si ha ocurrido un error
@@ -336,16 +347,22 @@ function isImage(extension) {
 /// //FIN ARCHIVOS AUDIO Y SONIDO
 
 /*ARRASTRAR IMAGENES*/
-
-$(function () {
+sliderDrop();
+function sliderDrop(){
     $(".item").droppable({
         drop: function (event, ui) {
-
-            var id = ui.draggable.attr("src");
-            //alert(id);
-            //alert(this);
-
-            $(this).children().html("<img src='" + id + "'>");
+            
+            if(ui.draggable.attr("id")=="draggable"){
+                //alert("img");
+                var id = ui.draggable.attr("src");
+                $(this).children().append("<img src='" + id + "'>");
+                
+            }else{
+                //alert("audio");
+                var id = ui.draggable.children().attr("src");
+                $(this).children().prepend("<audio controls><source src='" + id + "' type='audio/mp3'></audio>");
+            }
+            
+            
         }
-    });
-});
+});}
