@@ -282,7 +282,7 @@ span{font-size: 14px;
 /*ARRASTRAR IMAGENES*/
 .ocultar{
     display: none;
-};
+}
 .mostrar{
     display: block;
 }
