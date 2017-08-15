@@ -1,6 +1,6 @@
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello Travis!\n') // this will FAIL travis ci lint
-}).listen(1337, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:1337/');
+ Var http = require ( ' http ' );
+ Http  CreateServer ( función ( req , res ) {
+   Res .  WriteHead ( 200 , { ' Content-Type ' : ' text / plain ' });
+   Res .  Final ( ' Hola Travis! \ N ' );  // build debería pasar ahora!
+ }).  Listen ( 1337 , ' 127.0.0.1 ' );
+ Consola  Log ( ' Servidor en ejecución en http://127.0.0.1:1337/ ' ); 
