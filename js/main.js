@@ -698,7 +698,8 @@ function recibirCuento() {
             
            // $(".carousel-indicators").append(" <li data-target='#myCarousel' data-slide-to='"+index+"'></li>");
         });
-            $(".carousel-inner").append("<div class='item'> \
+            if(elem.pregunta.length>0){
+                $(".carousel-inner").append("<div class='item'> \
                                     <img src='../img/fondointerrogacion.jpg' alt='ImagenCuento'>\
                                     <div class='container'>\
                                         <div class='carousel-caption'>\
@@ -706,6 +707,8 @@ function recibirCuento() {
                                         </div>\
                                     </div>\
                                     </div>");
+            }
+            
             $.each(elem.pregunta, function (i, elem2) {
                 /*$("#audioPregunta").attr('src') = elem2.audio;
                 $("#img1").attr('src') = elem2.img1;
