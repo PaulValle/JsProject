@@ -150,9 +150,15 @@ body {
     width: 150px;
     height: 130px;
     border: 0;
+    opacity: 4px;
     
 }
 
+
+#reproducir:hover{
+    width: 180px;
+    height: 150px;
+}
 #btnLista{
     
     background-color: transparent;
@@ -278,6 +284,13 @@ body {
 }
 .panel-body{
     height: 30%;
+}
+
+
+/*PREGUNTAS*/
+
+.pintarRspCorrecta{
+    background-color: coral;
 }
 
 .fondoEscenas .fondoPreguntas{

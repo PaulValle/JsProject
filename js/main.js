@@ -678,7 +678,7 @@ function recibirCuento() {
             //alert("oki");
             $(".cuentoTitulo").html(elem.nombre);
             $(".descripcion").html(elem.descripcion);
-            $(".credito").html(elem.credito);
+            $(".credito").html("Créditos: "+elem.credito);
             $.each(elem.pagina, function (index, elem) {
                 $(".carousel-inner").append("<div class='item'> \
                                     <img src='" + elem.imagen + "' alt='ImagenCuento'>\
@@ -699,23 +699,39 @@ function recibirCuento() {
            // $(".carousel-indicators").append(" <li data-target='#myCarousel' data-slide-to='"+index+"'></li>");
         });
             if(elem.pregunta.length>0){
-                $(".carousel-inner").append("<div class='item'> \
-                                    <img src='../img/fondointerrogacion.jpg' alt='ImagenCuento'>\
-                                    <div class='container'>\
-                                        <div class='carousel-caption'>\
-                                            <button id='reproducir' onclick='mst()'><img src='../img/interrogacion.png'></button>\
-                                        </div>\
-                                    </div>\
-                                    </div>");
+                
             }
             
             $.each(elem.pregunta, function (i, elem2) {
-                /*$("#audioPregunta").attr('src') = elem2.audio;
-                $("#img1").attr('src') = elem2.img1;
-                $("#img2").attr('src') = elem2.img2;*/
-                $(".fondoPreguntas").html("<button id='valImg1' onclick = 'validarimg1()'><img id='img1' src='" + elem2.img1 + "' alt=''></button>\
-                                            <button id='valImg2' onclick = 'validarimg1()'><img id='img2' src='" + elem2.img2 + "' alt=''></button>");
-                $(".fondoAudio").append("<audio controls id='audioPregunta' class='ocultar'><source src='"+ elem2.audio+"'></audio>");
+              $(".carousel-inner").append("<div class='item'> \
+                                    <img src='../img/fondoPregunta.jpg' alt='ImagenCuento'>\
+                                    <div class='container'>\
+                                        <div class='carousel-caption'>\
+                                            <h3>PREGUNTA "+(i+1)+"</h3>\
+                                            <button id='reproducir' onclick='mst("+(i+1)+")'><img src='../img/interrogacion.png'></button>\
+                                        </div>\
+                                    </div>\
+                                    </div>");
+                
+                $(".cntCuento").append("<div id='preguntas"+(i+1)+"' class='ocultar'>\
+                          <div class='panel panel-default'>\
+                                <div class='panel-heading'>\
+                                    <h3 class='panel-title'>ACTIVIDAD</h3>\
+                                </div>\
+                                <div class='panel-body'>\
+                                        <div class='col-md-4 col-sm-4 fondoAudio'>\
+                                            <br><br><br>\
+                                            <audio controls id='audioPregunta' class='ocultar'><source src='"+ elem2.audio+"'></audio>\
+                                            <button id='reproducir' onclick='reproducirPregunta()'><img src='../img/repro.png'></button>\
+                                        </div>\
+                                        <div class='col-md-8 col-sm-8 fondoPreguntas'>\
+                                            <button id='valImg1' onclick = 'validarimg1()'><img id='img1' src='" + elem2.img1 + "' alt=''></button>\
+                                            <button id='valImg2' onclick = 'validarimg2()'><img id='img2' src='" + elem2.img2 + "' alt=''></button>\
+                                        </div>\
+                                </div>\
+                            </div>\
+                      </div>");
+               
                 idRespuesta = elem2.respuesta;
             });
         }
@@ -735,17 +751,22 @@ function reproducirPregunta(btn) {
 };
 
 /*PREGUNTAS*/
-function mst() {
-    $("#preguntas").removeClass("ocultar");
-    $("#preguntas").addClass("mostrar");
+function mst(i) {
+    var prg='#preguntas'+i;
+    $(prg).removeClass("ocultar");
+    $(prg).addClass("mostrar");
+    
+    $("#myCarousel").removeClass("mostrar");
     $("#myCarousel").addClass("ocultar");
 };
 
 function ocl() {
     $("#myCarousel").removeClass("ocultar");
     $("#myCarousel").addClass("mostrar");
-    $("#preguntas").removeClass("mostrar");
-    $("#preguntas").addClass("ocultar");
+    $("#preguntas1").removeClass("mostrar");
+    $("#preguntas1").addClass("ocultar");
+    $("#preguntas2").removeClass("mostrar");
+    $("#preguntas2").addClass("ocultar");
 };
 
 //PASAR VARIABLE
@@ -763,15 +784,17 @@ function validarimg1(){
         ocl();
        }else{
         alert("La respuesta era la otra opcion :c");
-        ocl(); 
+        $("#img2").addClass('pintarRspCorrecta');
+        
        }
 }
 function validarimg2(){
-     if(idRespuesta == 1){
+     if(idRespuesta == 2){
         alert("FELICIDADES!!! LO CONSEGUISTE");
         ocl();
        }else{
         alert("La respuesta era la otra opcion :c");
-        ocl(); 
+        $("#img1").addClass('pintarRspCorrecta').delay;
+        
        }
 }
