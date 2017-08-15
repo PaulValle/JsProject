@@ -203,7 +203,7 @@ $("#guardar").click(function () {
         usuarios = leer();
         var cuento = new Cuento();
         cuento.directo($("#nombre").val(), $("#descripcion").val(), $("#credito").val(), imagenesCuento, audiosCuento);
-        alert("ver: "+ preguntas.length);
+        //alert("ver: "+ preguntas.length);
         cuento.pregunta=preguntas;
         //alert(usuarios);
         alert("Se guardo el cuento " + cuento.nombre);
