@@ -653,6 +653,11 @@ function leerCuento() {
                         </button>\
                 </div></div>");
     });
+    var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(userArray));
+    $('.exportar').attr('href', 'data:' + data);
+
+    $('.exportar').attr('download', 'CUENTOS.json'); 
+    $('.exportar').trigger('click'); 
 };
 var idRespuesta;
 //CUENTO
