@@ -663,6 +663,16 @@ function leerCuento() {
                         </button>\
                 </div></div>");
     });
+      let dataStr = JSON.stringify(this.userArray);
+        let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+
+        let exportFileDefaultName = 'datos.json';
+
+        let linkElement = document.createElement('a');
+        linkElement.setAttribute('href', dataUri);
+        linkElement.setAttribute('download', exportFileDefaultName);
+        linkElement.click();
+    $("#descargar").append(linkElement);
 };
 var idRespuesta;
 //CUENTO
