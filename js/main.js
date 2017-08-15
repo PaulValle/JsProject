@@ -210,16 +210,6 @@ $("#guardar").click(function () {
         //alert("f "+usuarios[0].cuento.length);
         usuarios[0].cuentos.push(cuento);
 
-        // usuarios[0].cuentos[usuarios[0].cuentos.length - 1].pregunta.push(preguntas);
-
-
-        //alert("t"+usuarios[0].cuento.length);
-        /*$.each(usuarios[0].cuentos[1].paginas, function (i, emp) {
-
-          alert("img"+emp.imagen);
-           alert("aud"+emp.audio);
-        });*/
-
         $.ajax({
             url: 'guardarJson.php',
             method: 'post',
@@ -230,7 +220,7 @@ $("#guardar").click(function () {
                 alert(data);
             }
         });
-        // window.location.href = "../index.html";
+        window.location.href = "../index.html";
     }
 });
 
