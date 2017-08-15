@@ -1,7 +1,16 @@
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello Travis!\n'); // correcion de ;!
-}).listen(1337, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:1337/');
-
+// importar
+var express = require('express');
+ 
+// instanciar
+var app = express(); 
+app.use(express.static('css'));
+app.use(express.static('img'));
+app.use(express.static('js'));
+// ruteo
+app.get('/', function(req, res){
+  res.sendfile(__dirname + '/index.html');
+});
+// escuchar
+app.listen(9000);
+ 
+console.log("Servidor Express escuchando en modo %s", app.settings.env);
