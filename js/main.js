@@ -603,7 +603,7 @@ function isImage(extension) {
         case 'mp3':
         case 'wav':
         case 'mp4':
-        case 'ogg':
+        case 'm4a':
             return true;
             break;
         default:
@@ -666,7 +666,7 @@ function recibirCuento() {
     $.each(userArray[0].cuentos, function (index, elem) {
         if (elem.nombre == j) {
             //alert("oki");
-            $(".cuentoTitulo").html(elem.nombre);
+            $(".cuentoTitulo").html("<a href='#'>"+elem.nombre+"</a>");
             $(".descripcion").html(elem.descripcion);
             $(".credito").html("Créditos: "+elem.credito);
             $.each(elem.pagina, function (index, elem) {
@@ -688,10 +688,7 @@ function recibirCuento() {
             
            // $(".carousel-indicators").append(" <li data-target='#myCarousel' data-slide-to='"+index+"'></li>");
         });
-            if(elem.pregunta.length>0){
-                
-            }
-            
+           
             $.each(elem.pregunta, function (i, elem2) {
               $(".carousel-inner").append("<div class='item'> \
                                     <img src='../img/fondoPregunta.jpg' alt='ImagenCuento'>\
@@ -712,7 +709,7 @@ function recibirCuento() {
                                         <div class='col-md-4 col-sm-4 fondoAudio'>\
                                             <br><br><br>\
                                             <audio controls id='audioPregunta' class='ocultar'><source src='"+ elem2.audio+"'></audio>\
-                                            <button id='reproducir' onclick='reproducirPregunta()'><img src='../img/repro.png'></button>\
+                                            <button id='reproducirPre"+(i+1)+"' onclick='reproducirPregunta"+(i+1)+"()'><img src='../img/repro.png'></button>\
                                         </div>\
                                         <div class='col-md-8 col-sm-8 fondoPreguntas'>\
                                             <button id='valImg1' onclick = 'validarimg1()'><img id='img1' src='" + elem2.img1 + "' alt=''></button>\
@@ -735,9 +732,13 @@ function reproducir(btn) {
    //$(btn).parent().find('audio').attr( "autoplay", "autoplay" );
    $(btn).parent().find('audio')[0].play();
 };
-function reproducirPregunta(btn) {
+function reproducirPregunta1(btn) {
    
-   $("#reproducir").parent().find('audio')[0].play();
+   $("#reproducirPre1").parent().find('audio')[0].play();
+};
+function reproducirPregunta2(btn) {
+   
+   $("#reproducirPre2").parent().find('audio')[0].play();
 };
 
 /*PREGUNTAS*/
@@ -771,20 +772,26 @@ function enviar(btn) {
 function validarimg1(){
      if(idRespuesta == 1){
         alert("FELICIDADES!!! LO CONSEGUISTE");
+        $("#valImg1").removeClass('pintarRspCorrecta');
+        $("#valImg1").addClass('limpiarRspCorrecta');
         ocl();
        }else{
-        alert("La respuesta era la otra opcion :c");
-        $("#img2").addClass('pintarRspCorrecta');
+            alert("La respuesta era la otra opcion :c ! Intenta de nuevo");
+            $("#valImg2").removeClass('limpiarRspCorrecta');
+            $("#valImg2").addClass('pintarRspCorrecta');
         
        }
 }
 function validarimg2(){
      if(idRespuesta == 2){
         alert("FELICIDADES!!! LO CONSEGUISTE");
+         $("#valImg2").removeClass('pintarRspCorrecta');
+         $("#valImg2").addClass('limpiarRspCorrecta');
         ocl();
        }else{
-        alert("La respuesta era la otra opcion :c");
-        $("#img1").addClass('pintarRspCorrecta').delay;
+        alert("La respuesta era la otra opcion :c ! Intenta de nuevo");
+        $("#valImg1").removeClass('limpiarRspCorrecta');
+        $("#valImg1").addClass('pintarRspCorrecta');
         
        }
 }
